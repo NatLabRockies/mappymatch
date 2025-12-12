@@ -1,15 +1,13 @@
 import functools as ft
 import logging
 
-from shapely.geometry import Point
-
-from mappymatch.constructs.coordinate import Coordinate
 from mappymatch.maps.map_interface import MapInterface
 from mappymatch.matchers.lcss.constructs import TrajectorySegment
 from mappymatch.matchers.lcss.ops import (
     add_matches_for_stationary_points,
     drop_stationary_points,
     find_stationary_points,
+    join_segment,
     new_path,
     same_trajectory_scheme,
     split_trajectory_segment,
@@ -59,31 +57,6 @@ class LCSSMatcher(MatcherInterface):
         self.distance_threshold = distance_threshold
 
     def match_trace(self, trace: Trace) -> MatchResult:
-        def _join_segment(a: TrajectorySegment, b: TrajectorySegment):
-            new_traces = a.trace + b.trace
-            new_path = a.path + b.path
-
-            # test to see if there is a gap between the paths and if so,
-            # try to connect it
-            if len(a.path) > 1 and len(b.path) > 1:
-                end_road = a.path[-1]
-                start_road = b.path[0]
-                if end_road.road_id.end != start_road.road_id.start:
-                    o = Coordinate(
-                        coordinate_id=None,
-                        geom=Point(end_road.geom.coords[-1]),
-                        crs=new_traces.crs,
-                    )
-                    d = Coordinate(
-                        coordinate_id=None,
-                        geom=Point(start_road.geom.coords[0]),
-                        crs=new_traces.crs,
-                    )
-                    path = self.road_map.shortest_path(o, d)
-                    new_path = a.path + path + b.path
-
-            return TrajectorySegment(new_traces, new_path)
-
         stationary_index = find_stationary_points(trace)
 
         sub_trace = drop_stationary_points(trace, stationary_index)
@@ -115,7 +88,7 @@ class LCSSMatcher(MatcherInterface):
                     # split and check the score
                     new_split = split_trajectory_segment(road_map, scored_segment)
                     joined_segment = ft.reduce(
-                        _join_segment, new_split
+                        lambda a, b: join_segment(road_map, a, b), new_split
                     ).score_and_match(de, dt)
                     if joined_segment.score > scored_segment.score:
                         # we found a better fit
@@ -128,7 +101,9 @@ class LCSSMatcher(MatcherInterface):
 
             scheme = next_scheme
 
-        joined_segment = ft.reduce(_join_segment, scheme).score_and_match(de, dt)
+        joined_segment = ft.reduce(
+            lambda a, b: join_segment(road_map, a, b), scheme
+        ).score_and_match(de, dt)
 
         matches = joined_segment.matches
 

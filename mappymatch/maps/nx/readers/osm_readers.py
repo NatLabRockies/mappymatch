@@ -38,6 +38,7 @@ def nx_graph_from_osmnx(
     xy: bool = True,
     custom_filter: Optional[str] = None,
     additional_metadata_keys: Optional[set] = None,
+    filter_to_largest_component: bool = True,
 ) -> nx.MultiDiGraph:
     """
     Build a networkx graph from OSM data
@@ -48,6 +49,8 @@ def nx_graph_from_osmnx(
         xy: whether to use xy coordinates or lat/lon
         custom_filter: a custom filter to pass to osmnx
         additional_metadata_keys: additional keys to preserve in metadata
+        filter_to_largest_component: if True, keep only the largest strongly connected component;
+            if False, keep all components (may result in routing failures between disconnected components)
 
     Returns:
         a networkx graph of the OSM network
@@ -68,6 +71,7 @@ def nx_graph_from_osmnx(
         network_type,
         xy=xy,
         additional_metadata_keys=additional_metadata_keys,
+        filter_to_largest_component=filter_to_largest_component,
     )
 
 
@@ -76,6 +80,7 @@ def parse_osmnx_graph(
     network_type: NetworkType,
     xy: bool = True,
     additional_metadata_keys: Optional[set] = None,
+    filter_to_largest_component: bool = True,
 ) -> nx.MultiDiGraph:
     """
     Parse the raw osmnx graph into a graph that we can use with our NxMap
@@ -85,6 +90,8 @@ def parse_osmnx_graph(
         xy: whether to use xy coordinates or lat/lon
         network_type: the network type to use for the graph
         additional_metadata_keys: additional keys to preserve in metadata
+        filter_to_largest_component: if True, keep only the largest strongly connected component;
+            if False, keep all components (may result in routing failures between disconnected components)
 
     Returns:
         a cleaned networkx graph of the OSM network
@@ -107,15 +114,16 @@ def parse_osmnx_graph(
     nx.set_edge_attributes(g, kilometers, "kilometers")
 
     # this makes sure there are no graph 'dead-ends'
-    sg_components = nx.strongly_connected_components(g)
+    if filter_to_largest_component:
+        sg_components = nx.strongly_connected_components(g)
 
-    if not sg_components:
-        raise MapException(
-            "road network has no strongly connected components and is not routable; "
-            "check polygon boundaries."
-        )
+        if not sg_components:
+            raise MapException(
+                "road network has no strongly connected components and is not routable; "
+                "check polygon boundaries."
+            )
 
-    g = nx.MultiDiGraph(g.subgraph(max(sg_components, key=len)))
+        g = nx.MultiDiGraph(g.subgraph(max(sg_components, key=len)))
 
     for u, v, d in g.edges(data=True):
         if "geometry" not in d:

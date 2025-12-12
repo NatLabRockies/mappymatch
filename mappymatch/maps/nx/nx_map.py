@@ -209,6 +209,7 @@ class NxMap(MapInterface):
         network_type: NetworkType = NetworkType.DRIVE,
         custom_filter: Optional[str] = None,
         additional_metadata_keys: Optional[set | list] = None,
+        filter_to_largest_component: bool = True,
     ) -> NxMap:
         """
         Read an OSM network graph into a NxMap
@@ -218,7 +219,9 @@ class NxMap(MapInterface):
             xy: whether to use xy coordinates or lat/lon
             network_type: the network type to use for the graph
             custom_filter: a custom filter to pass to osmnx like '["highway"~"motorway|primary"]'
-            additional_metadata_keys: additional keys to preserve in road metadata like '["maxspeed", "highway"]
+            additional_metadata_keys: additional keys to preserve in road metadata like '["maxspeed", "highway"]'
+            filter_to_largest_component: if True, keep only the largest strongly connected component;
+                if False, keep all components (may result in routing failures between disconnected components)
 
         Returns:
             a NxMap
@@ -237,6 +240,7 @@ class NxMap(MapInterface):
             xy=xy,
             custom_filter=custom_filter,
             additional_metadata_keys=additional_metadata_keys,
+            filter_to_largest_component=filter_to_largest_component,
         )
 
         return NxMap(nx_graph)
@@ -374,12 +378,17 @@ class NxMap(MapInterface):
         else:
             dest_id = dest_road.road_id.end
 
-        nx_route = nx.shortest_path(
-            self.g,
-            origin_id,
-            dest_id,
-            weight=weight,
-        )
+        try:
+            nx_route = nx.shortest_path(
+                self.g,
+                origin_id,
+                dest_id,
+                weight=weight,
+            )
+        except nx.NetworkXNoPath:
+            # No path exists between origin and destination
+            # This can happen when the graph has multiple disconnected components
+            return []
 
         path = []
         for i in range(1, len(nx_route)):
