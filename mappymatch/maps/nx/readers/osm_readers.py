@@ -62,6 +62,7 @@ def nx_graph_from_osmnx(
         geofence.geometry,
         network_type=network_type.value,
         custom_filter=custom_filter,
+        truncate_by_edge=True,
     )
     return parse_osmnx_graph(
         raw_graph,
