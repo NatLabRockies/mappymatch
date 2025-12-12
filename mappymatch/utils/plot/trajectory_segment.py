@@ -13,7 +13,6 @@ def plot_trajectory_segment(
     segment: TrajectorySegment,
     m: Optional[folium.Map] = None,
     trace_point_color: str = "black",
-    trace_line_color: str = "green",
     path_line_color: str = "red",
     path_line_weight: int = 10,
     path_line_opacity: float = 0.8,
@@ -46,7 +45,8 @@ def plot_trajectory_segment(
     matches = segment.matches
     cutting_points = segment.cutting_points
 
-    # Convert trace to lat/lon if needed
+    original_crs = trace.crs
+
     if trace.crs != LATLON_CRS:
         trace = trace.to_crs(LATLON_CRS)
 
@@ -67,22 +67,16 @@ def plot_trajectory_segment(
             fill_color=trace_point_color,
         ).add_to(m)
 
-    # Plot trace line
-    folium.PolyLine(
-        [(p.y, p.x) for p in trace.coords],
-        color=trace_line_color,
-        tooltip="Trace",
-    ).add_to(m)
-
     # Plot path (roads) if available
     if path:
         road_df = pd.DataFrame([{"road_id": r.road_id, "geom": r.geom} for r in path])
-        road_gdf = gpd.GeoDataFrame(road_df, geometry=road_df.geom, crs=trace.crs).drop(
-            columns=["geom"]
-        )
+        road_gdf = gpd.GeoDataFrame(
+            road_df, geometry=road_df.geom, crs=original_crs
+        ).drop(columns=["geom"])
         road_gdf = road_gdf.to_crs(LATLON_CRS)
 
         for road in road_gdf.itertuples():
+            print(road)
             folium.PolyLine(
                 [(lat, lon) for lon, lat in road.geometry.coords],
                 color=path_line_color,
@@ -96,12 +90,12 @@ def plot_trajectory_segment(
         for i, match in enumerate(matches):
             if match.road:
                 coord = match.coordinate
-                if trace.crs != LATLON_CRS:
+                if original_crs != LATLON_CRS:
                     # Convert coordinate to lat/lon
                     coord_gdf = gpd.GeoDataFrame(
                         [{"geom": Point(coord.x, coord.y)}],
                         geometry="geom",
-                        crs=trace.crs,
+                        crs=original_crs,
                     )
                     coord_gdf = coord_gdf.to_crs(LATLON_CRS)
                     coord_point = coord_gdf.iloc[0].geometry
