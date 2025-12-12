@@ -115,7 +115,7 @@ class TrajectorySegment(NamedTuple):
         if m < 1:
             # todo: find a better way to handle this edge case
             raise Exception("traces of 0 points can't be matched")
-        elif n < 2:
+        elif n == 0:
             # a path was not found for this segment; might not be matchable;
             # we set a score of zero and return a set of no-matches
             matches = [
