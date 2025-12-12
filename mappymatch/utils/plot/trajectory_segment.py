@@ -28,7 +28,6 @@ def plot_trajectory_segment(
         segment: The TrajectorySegment to plot.
         m: The folium map to plot on. If None, a new map will be created.
         trace_point_color: The color for trace points.
-        trace_line_color: The color for the trace line.
         path_line_color: The color for the path line.
         path_line_weight: The weight of the path line.
         path_line_opacity: The opacity of the path line.

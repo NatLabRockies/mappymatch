@@ -16,7 +16,7 @@ def plot_map(tmap: NxMap, m: Optional[folium.Map] = None, highlight: bool = Fals
     Args:
         tmap: The Nxmap to plot.
         m: the folium map to add to
-        highlight: Whether to enable hover highlighting and popups (default: True)
+        highlight: Whether to enable hover highlighting and popups (default: False)
 
     Returns:
         The folium map with the roads plotted.

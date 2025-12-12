@@ -3,6 +3,7 @@ from unittest.mock import Mock
 
 import networkx as nx
 import osmnx as ox
+import geopandas as gpd
 from shapely.geometry import LineString, Point
 
 from mappymatch.constructs.coordinate import Coordinate
@@ -150,9 +151,6 @@ class TestDisconnectedComponents(TestCase):
             Coordinate(None, Point(11, 10), XY_CRS),
         ]
 
-        # Create traces from coordinate lists
-        import geopandas as gpd
-
         gdf1 = gpd.GeoDataFrame(
             {"geometry": [c.geom for c in coords1]}, crs=XY_CRS, index=[0, 1]
         )
@@ -208,9 +206,6 @@ class TestDisconnectedComponents(TestCase):
             Coordinate(None, Point(2, 0), XY_CRS),
             Coordinate(None, Point(3, 0), XY_CRS),
         ]
-
-        # Create traces from coordinate lists
-        import geopandas as gpd
 
         gdf1 = gpd.GeoDataFrame(
             {"geometry": [c.geom for c in coords1]}, crs=XY_CRS, index=[0, 1]
