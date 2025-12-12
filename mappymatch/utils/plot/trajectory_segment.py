@@ -76,7 +76,6 @@ def plot_trajectory_segment(
         road_gdf = road_gdf.to_crs(LATLON_CRS)
 
         for road in road_gdf.itertuples():
-            print(road)
             folium.PolyLine(
                 [(lat, lon) for lon, lat in road.geometry.coords],
                 color=path_line_color,
