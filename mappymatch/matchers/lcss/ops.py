@@ -2,6 +2,8 @@ import logging
 from copy import deepcopy
 from typing import Any, List, NamedTuple
 
+from shapely.geometry import Point
+
 from mappymatch.constructs.coordinate import Coordinate
 from mappymatch.constructs.match import Match
 from mappymatch.constructs.road import Road
@@ -14,6 +16,49 @@ from mappymatch.matchers.lcss.constructs import (
 from mappymatch.matchers.lcss.utils import merge
 
 log = logging.getLogger(__name__)
+
+
+def join_segment(
+    road_map: MapInterface, a: TrajectorySegment, b: TrajectorySegment
+) -> TrajectorySegment:
+    """
+    Join two trajectory segments together, attempting to route between them if needed.
+
+    Args:
+        road_map: The road map to use for routing
+        a: The first trajectory segment
+        b: The second trajectory segment
+
+    Returns:
+        A new trajectory segment combining both segments
+    """
+    new_traces = a.trace + b.trace
+    new_path = a.path + b.path
+
+    # test to see if there is a gap between the paths and if so,
+    # try to connect it
+    if len(a.path) > 0 and len(b.path) > 0:
+        end_road = a.path[-1]
+        start_road = b.path[0]
+        if end_road.road_id.end != start_road.road_id.start:
+            o = Coordinate(
+                coordinate_id=None,
+                geom=Point(end_road.geom.coords[-1]),
+                crs=new_traces.crs,
+            )
+            d = Coordinate(
+                coordinate_id=None,
+                geom=Point(start_road.geom.coords[0]),
+                crs=new_traces.crs,
+            )
+            path = road_map.shortest_path(o, d)
+            # If no path exists (disconnected components), just concatenate the paths
+            if path:
+                new_path = a.path + path + b.path
+            else:
+                new_path = a.path + b.path
+
+    return TrajectorySegment(new_traces, new_path)
 
 
 def new_path(
