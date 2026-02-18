@@ -220,8 +220,7 @@ class NxMap(MapInterface):
             network_type: the network type to use for the graph
             custom_filter: a custom filter to pass to osmnx like '["highway"~"motorway|primary"]'
             additional_metadata_keys: additional keys to preserve in road metadata like '["maxspeed", "highway"]'
-            filter_to_largest_component: if True, keep only the largest strongly connected component;
-                if False, keep all components (may result in routing failures between disconnected components)
+            filter_to_largest_component: if True, keep only the largest strongly connected component; if False, keep all components (may result in routing failures between disconnected components)
 
         Returns:
             a NxMap

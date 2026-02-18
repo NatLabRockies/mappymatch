@@ -124,5 +124,8 @@ fmt_fix = "ruff format"
 lint_fix = "ruff check --fix"
 typing = "mypy ."
 test = "pytest tests/"
-docs = "cd docs/ && jupyter-book build ."
+convert_notebooks = "python docs/examples/_convert_examples_to_notebooks.py"
+docs = { depends-on = [
+  "convert_notebooks",
+], cmd = "cd docs/ && jupyter-book build ." }
 check = { depends-on = ["fmt_fix", "lint_fix", "typing", "test"] }

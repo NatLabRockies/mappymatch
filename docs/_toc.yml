@@ -14,7 +14,7 @@ parts:
 
   - caption: Example
     chapters:
-      - file: lcss-example
+      - file: examples/lcss_example
 
   - caption: Reference
     chapters:

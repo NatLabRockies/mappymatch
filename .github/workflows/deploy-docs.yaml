@@ -29,6 +29,10 @@ jobs:
           conda install -c conda-forge osmnx
           pip install ".[dev]"
 
+      - name: Convert examples to notebooks
+        run: |
+          python docs/examples/_convert_examples_to_notebooks.py
+
       - name: Build book
         run: |
           jupyter-book build docs/

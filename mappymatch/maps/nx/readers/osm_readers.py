@@ -49,8 +49,7 @@ def nx_graph_from_osmnx(
         xy: whether to use xy coordinates or lat/lon
         custom_filter: a custom filter to pass to osmnx
         additional_metadata_keys: additional keys to preserve in metadata
-        filter_to_largest_component: if True, keep only the largest strongly connected component;
-            if False, keep all components (may result in routing failures between disconnected components)
+        filter_to_largest_component: if True, keep only the largest strongly connected component; if False, keep all components (may result in routing failures between disconnected components)
 
     Returns:
         a networkx graph of the OSM network
@@ -90,8 +89,7 @@ def parse_osmnx_graph(
         xy: whether to use xy coordinates or lat/lon
         network_type: the network type to use for the graph
         additional_metadata_keys: additional keys to preserve in metadata
-        filter_to_largest_component: if True, keep only the largest strongly connected component;
-            if False, keep all components (may result in routing failures between disconnected components)
+        filter_to_largest_component: if True, keep only the largest strongly connected component; if False, keep all components (may result in routing failures between disconnected components)
 
     Returns:
         a cleaned networkx graph of the OSM network

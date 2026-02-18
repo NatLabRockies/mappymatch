@@ -2,4 +2,4 @@
 
 First, follow the [installation instructions](install).
 
-Then, checkout the [LCSS example](lcss-example).
+Then, checkout the [LCSS example](examples/lcss_example).
