@@ -1,6 +1,6 @@
 # mappymatch
 
-Mappymatch is a pure-python package developed and open sourced by the National Renewable Energy Laboratory. It contains a collection of "Matchers" that enable matching a GPS trace (series of GPS coordinates) to a map.
+Mappymatch is a pure-python package developed and open sourced by the National Laboratory of the Rockies. It contains a collection of "Matchers" that enable matching a GPS trace (series of GPS coordinates) to a map.
 
 ![Map Matching Animation](docs/images/map-matching.gif?raw=true)
 

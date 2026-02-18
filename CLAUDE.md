@@ -14,4 +14,9 @@ Mappymatch is a python package used to match a series of GPS waypoints (Trace) t
 ```
 pixi run -e dev check
 ```
+### building the docs
+
+```
+pixi run docs
+```
 
