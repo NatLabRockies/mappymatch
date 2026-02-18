@@ -1429,7 +1429,7 @@ packages:
 - pypi: ./
   name: mappymatch
   version: 0.7.1
-  sha256: 72e671a048b98445eef7be2a372bb09a50aa5b84ca082a2d226c15403dd41121
+  sha256: e504a892be5b6396c3a2a341950038aa4ec9cdf83580e46ff65ac03e04ab751c
   requires_dist:
   - folium>=0.20,<1
   - geopandas>=1,<2
