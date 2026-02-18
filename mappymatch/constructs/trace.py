@@ -16,12 +16,37 @@ from mappymatch.utils.crs import LATLON_CRS, XY_CRS
 
 class Trace:
     """
-    A Trace is a collection of coordinates that represents a trajectory to be matched.
+    A collection of coordinates representing a GPS trajectory or path to be map-matched.
+
+    A Trace wraps a GeoDataFrame of point geometries and provides methods for creating,
+    manipulating, and transforming GPS trajectories. Traces are the primary input for
+    map matching algorithms.
+
+    The underlying GeoDataFrame must have unique indices - duplicate indices will raise
+    an IndexError during initialization.
 
     Attributes:
-        coords: A list of all the coordinates
-        crs: The CRS of the trace
-        index: The index of the trace
+        coords: A list of Coordinate objects representing each point in the trajectory
+        crs: The coordinate reference system (CRS) of the trace
+        index: The pandas Index from the underlying GeoDataFrame
+
+    Examples:
+        >>> import pandas as pd
+        >>> from mappymatch.constructs.trace import Trace
+        >>>
+        >>> # Create from a DataFrame with lat/lon columns
+        >>> df = pd.DataFrame({
+        ...     'latitude': [40.7128, 40.7589, 40.7614],
+        ...     'longitude': [-74.0060, -73.9851, -73.9776]
+        ... })
+        >>> trace = Trace.from_dataframe(df)
+        >>>
+        >>> # Create from a GPX file
+        >>> trace = Trace.from_gpx('path/to/track.gpx')
+        >>>
+        >>> # Access coordinates
+        >>> print(len(trace))  # Number of points
+        >>> first_coord = trace.coords[0]
     """
 
     _frame: GeoDataFrame
@@ -69,7 +94,13 @@ class Trace:
     @cached_property
     def coords(self) -> List[Coordinate]:
         """
-        Get coordinates as Coordinate objects.
+        Get all coordinates in the trace as Coordinate objects.
+
+        This property constructs Coordinate objects from the underlying GeoDataFrame,
+        preserving the index values as coordinate IDs. The result is cached for performance.
+
+        Returns:
+            A list of Coordinate objects, one for each point in the trace, ordered by the trace index
         """
         coords_list = [
             Coordinate(i, g, self.crs)
@@ -89,16 +120,29 @@ class Trace:
         xy: bool = True,
     ) -> Trace:
         """
-        Builds a trace from a geopandas dataframe
+        Create a trace from a GeoPandas GeoDataFrame.
 
-        Expects the dataframe to have geometry column
+        The GeoDataFrame must contain a geometry column with Point geometries representing
+        the GPS trajectory. Additional columns are discarded - only the geometry and index
+        are retained.
 
         Args:
-            frame: geopandas dataframe with _one_ trace
-            xy: should the trace be projected to epsg 3857?
+            frame: A GeoDataFrame with Point geometries representing the trajectory. Must have a valid CRS and unique index values.
+            xy: If True, reproject the trace to Web Mercator (EPSG:3857) for distance calculations. If False, keep the original CRS. Default is True.
 
         Returns:
-            The trace built from the geopandas dataframe
+            A new Trace instance
+
+        Examples:
+            >>> import geopandas as gpd
+            >>> from shapely.geometry import Point
+            >>>
+            >>> # Create a GeoDataFrame with point geometries
+            >>> gdf = gpd.GeoDataFrame(
+            ...     geometry=[Point(-74.0060, 40.7128), Point(-73.9851, 40.7589)],
+            ...     crs='EPSG:4326'
+            ... )
+            >>> trace = Trace.from_geo_dataframe(gdf)
         """
         # get rid of any extra info besides geometry and index
         frame = GeoDataFrame(geometry=frame.geometry, index=frame.index)
@@ -115,18 +159,36 @@ class Trace:
         lon_column: str = "longitude",
     ) -> Trace:
         """
-        Builds a trace from a pandas dataframe
+        Create a trace from a pandas DataFrame with latitude/longitude columns.
 
-        Expects the dataframe to have latitude / longitude information in the epsg 4326 format
+        This is one of the most common ways to create a Trace from GPS data. The DataFrame
+        must contain columns with latitude and longitude values in WGS84 (EPSG:4326) format.
 
         Args:
-            dataframe: pandas dataframe with _one_ trace
-            xy: should the trace be projected to epsg 3857?
-            lat_column: the name of the latitude column
-            lon_column: the name of the longitude column
+            dataframe: A pandas DataFrame containing GPS coordinates in EPSG:4326 format
+            xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain lat/lon coordinates. Default is True.
+            lat_column: The name of the column containing latitude values. Default is "latitude".
+            lon_column: The name of the column containing longitude values. Default is "longitude".
 
         Returns:
-            The trace built from the pandas dataframe
+            A new Trace instance
+
+        Examples:
+            >>> import pandas as pd
+            >>>
+            >>> # Create from a DataFrame with default column names
+            >>> df = pd.DataFrame({
+            ...     'latitude': [40.7128, 40.7589, 40.7614],
+            ...     'longitude': [-74.0060, -73.9851, -73.9776]
+            ... })
+            >>> trace = Trace.from_dataframe(df)
+            >>>
+            >>> # Use custom column names
+            >>> df_custom = pd.DataFrame({
+            ...     'lat': [40.7128, 40.7589],
+            ...     'lon': [-74.0060, -73.9851]
+            ... })
+            >>> trace = Trace.from_dataframe(df_custom, lat_column='lat', lon_column='lon')
         """
         frame = GeoDataFrame(
             geometry=points_from_xy(dataframe[lon_column], dataframe[lat_column]),
@@ -143,16 +205,28 @@ class Trace:
         xy: bool = True,
     ) -> Trace:
         """
-        Builds a trace from a gpx file.
+        Create a trace from a GPX (GPS Exchange Format) file.
 
-        Expects the file to have simple gpx structure: a sequence of lat, lon pairs
+        Parses GPX track data and extracts latitude/longitude coordinates from trackpoints.
+        This method expects a simple GPX structure with a sequence of lat/lon coordinate pairs.
 
         Args:
-            file: the gpx file
-            xy: should the trace be projected to epsg 3857?
+            file: Path to the GPX file (as string or Path object)
+            xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain lat/lon coordinates. Default is True.
 
         Returns:
-            The trace built from the gpx file
+            A new Trace instance with coordinates extracted from the GPX file
+
+        Raises:
+            FileNotFoundError: If the specified file does not exist
+            TypeError: If the file does not have a .gpx extension
+
+        Examples:
+            >>> # Load a GPX track from a file
+            >>> trace = Trace.from_gpx('morning_run.gpx')
+            >>>
+            >>> # Keep in lat/lon instead of projecting
+            >>> trace_latlon = Trace.from_gpx('bike_ride.gpx', xy=False)
         """
         filepath = Path(file)
         if not filepath.is_file():
@@ -178,18 +252,31 @@ class Trace:
         lon_column: str = "longitude",
     ) -> Trace:
         """
-        Builds a trace from a csv file.
+        Create a trace from a CSV file containing latitude/longitude coordinates.
 
-        Expects the file to have latitude / longitude information in the epsg 4326 format
+        The CSV file must contain columns with latitude and longitude values in WGS84
+        (EPSG:4326) format. The DataFrame index will be used as coordinate IDs.
 
         Args:
-            file: the csv file
-            xy: should the trace be projected to epsg 3857?
-            lat_column: the name of the latitude column
-            lon_column: the name of the longitude column
+            file: Path to the CSV file (as string or Path object)
+            xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain lat/lon coordinates. Default is True.
+            lat_column: The name of the column containing latitude values. Default is "latitude".
+            lon_column: The name of the column containing longitude values. Default is "longitude".
 
         Returns:
-            The trace built from the csv file
+            A new Trace instance with coordinates from the CSV file
+
+        Raises:
+            FileNotFoundError: If the specified file does not exist
+            TypeError: If the file does not have a .csv extension
+            ValueError: If the specified lat/lon columns are not found in the CSV
+
+        Examples:
+            >>> # Load from CSV with default column names
+            >>> trace = Trace.from_csv('gps_data.csv')
+            >>>
+            >>> # Load with custom column names
+            >>> trace = Trace.from_csv('track.csv', lat_column='lat', lon_column='lng')
         """
         filepath = Path(file)
         if not filepath.is_file():
@@ -213,14 +300,21 @@ class Trace:
     @classmethod
     def from_parquet(cls, file: Union[str, Path], xy: bool = True):
         """
-        Read a trace from a parquet file
+        Create a trace from a GeoParquet file.
+
+        GeoParquet is a columnar storage format for geospatial data. The file must contain
+        a geometry column with Point geometries and a valid CRS.
 
         Args:
-            file: the parquet file
-            xy: should the trace be projected to epsg 3857?
+            file: Path to the GeoParquet file (as string or Path object)
+            xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain the original CRS. Default is True.
 
         Returns:
-            The trace built from the parquet file
+            A new Trace instance with coordinates from the GeoParquet file
+
+        Examples:
+            >>> # Load from a GeoParquet file
+            >>> trace = Trace.from_parquet('trajectory.parquet')
         """
         filepath = Path(file)
         frame = read_parquet(filepath)
@@ -235,16 +329,26 @@ class Trace:
         xy: bool = True,
     ):
         """
-        Reads a trace from a geojson file;
-        If index_property is not specified, this will set any property columns as the index.
+        Create a trace from a GeoJSON file containing Point features.
+
+        The GeoJSON file should contain Point geometries representing the GPS trajectory.
+        If index_property is specified, that property will be used as the DataFrame index;
+        otherwise, all non-geometry properties will be combined to create the index.
 
         Args:
-            file: the geojson file
-            index_property: the name of the property to use as the index
-            xy: should the trace be projected to epsg 3857?
+            file: Path to the GeoJSON file (as string or Path object)
+            index_property: The name of a GeoJSON property to use as the DataFrame index. If None, all properties excluding geometry will be used as index columns. Default is None.
+            xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain the original CRS. Default is True.
 
         Returns:
-            The trace built from the geojson file
+            A new Trace instance with coordinates from the GeoJSON file
+
+        Examples:
+            >>> # Load from GeoJSON, using all properties as index
+            >>> trace = Trace.from_geojson('path.geojson')
+            >>>
+            >>> # Use a specific property as index
+            >>> trace = Trace.from_geojson('points.geojson', index_property='timestamp')
         """
         filepath = Path(file)
         frame = read_file(filepath)
@@ -259,13 +363,23 @@ class Trace:
 
     def downsample(self, npoints: int) -> Trace:
         """
-        Downsample the trace to a given number of points
+        Downsample the trace to a specified number of evenly-spaced points.
+
+        This method uses linear interpolation across the trace indices to select a subset
+        of points that are approximately evenly distributed along the trajectory.
 
         Args:
-            npoints: the number of points to downsample to
+            npoints: The target number of points in the downsampled trace
 
         Returns:
-            The downsampled trace
+            A new Trace with approximately npoints evenly-distributed points
+
+        Examples:
+            >>> # Reduce a 1000-point trace to 100 points
+            >>> long_trace = Trace.from_csv('detailed_track.csv')
+            >>> print(len(long_trace))  # 1000
+            >>> short_trace = long_trace.downsample(100)
+            >>> print(len(short_trace))  # 100
         """
         s = list(np.linspace(0, len(self._frame) - 1, npoints).astype(int))
 
@@ -275,13 +389,24 @@ class Trace:
 
     def drop(self, index=List) -> Trace:
         """
-        Remove points from the trace specified by the index parameter
+        Remove points from the trace by their index values.
+
+        This method creates a new trace with specified points removed. The index parameter
+        should contain the DataFrame index values (not positional integers) of the points
+        to remove.
 
         Args:
-            index: the index of the points to drop (0 based index)
+            index: A list of index values identifying the points to remove. These should be
+                values from the trace's DataFrame index, not integer positions.
 
         Returns:
-            The trace with the points removed
+            A new Trace with the specified points removed
+
+        Examples:
+            >>> # Remove points with specific index values
+            >>> trace = Trace.from_dataframe(df)  # df has index [0, 1, 2, 3, 4]
+            >>> cleaned_trace = trace.drop([1, 3])  # Removes points at index 1 and 3
+            >>> print(len(cleaned_trace))  # 3 (originally 5, removed 2)
         """
         new_frame = self._frame.drop(index)
 
@@ -289,22 +414,42 @@ class Trace:
 
     def to_crs(self, new_crs: CRS) -> Trace:
         """
-        Converts the crs of a trace to a new crs
+        Transform the trace to a different coordinate reference system (CRS).
+
+        This method reprojects all coordinates in the trace to the specified CRS.
 
         Args:
-            new_crs: the new crs to convert to
+            new_crs: The target CRS. Can be a pyproj.CRS object, EPSG code string
+                (e.g., 'EPSG:4326'), or any format accepted by pyproj.CRS()
 
         Returns:
-            A new trace with the new crs
+            A new Trace with all coordinates transformed to the target CRS
+
+        Examples:
+            >>> # Convert from Web Mercator to WGS84 lat/lon
+            >>> trace_xy = Trace.from_csv('data.csv', xy=True)  # In EPSG:3857
+            >>> trace_latlon = trace_xy.to_crs('EPSG:4326')
+            >>>
+            >>> # Convert to a UTM zone
+            >>> from pyproj import CRS
+            >>> utm_crs = CRS('EPSG:32618')  # UTM Zone 18N
+            >>> trace_utm = trace_latlon.to_crs(utm_crs)
         """
         new_frame = self._frame.to_crs(new_crs)
         return Trace(new_frame)
 
     def to_geojson(self, file: Union[str, Path]):
         """
-        Write the trace to a geojson file
+        Write the trace to a GeoJSON file.
+
+        This exports the trace as a GeoJSON FeatureCollection where each point is a Feature
+        with Point geometry. The CRS information and any index data are preserved.
 
         Args:
-            file: the file to write to
+            file: Path where the GeoJSON file should be written (as string or Path object)
+
+        Examples:
+            >>> trace = Trace.from_csv('input.csv')
+            >>> trace.to_geojson('output.geojson')
         """
         self._frame.to_file(file, driver="GeoJSON")

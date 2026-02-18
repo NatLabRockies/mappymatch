@@ -29,11 +29,45 @@ from mappymatch.utils.keys import DEFAULT_CRS_KEY, DEFAULT_GEOMETRY_KEY
 
 class NxMap(MapInterface):
     """
-    A road map that uses a networkx graph to represent its roads.
+    A road network map implementation using NetworkX graphs.
+
+    NxMap wraps a NetworkX MultiDiGraph to represent a road network, providing efficient
+    graph operations and spatial queries. It uses an R-tree spatial index for fast
+    nearest-neighbor searches and supports both distance and time-based routing.
+
+    The underlying graph must have:
+    - A pyproj CRS stored in graph.graph['crs']
+    - Road geometries (LineStrings) for each edge
+    - Optional distance and time weights for routing
+
+    NxMap is the primary map implementation in mappymatch and integrates well with
+    OSMnx for downloading OpenStreetMap data.
 
     Attributes:
-        g: The networkx graph that represents the road map
+        g: The NetworkX MultiDiGraph representing the road network
         crs: The coordinate reference system of the map
+
+    Examples:
+        >>> from mappymatch.maps.nx import NxMap
+        >>> from mappymatch.constructs.geofence import Geofence
+        >>>
+        >>> # Load from a saved file
+        >>> road_map = NxMap.from_file('network.pickle')
+        >>>
+        >>> # Create from OpenStreetMap data
+        >>> geofence = Geofence.from_geojson('study_area.geojson')
+        >>> road_map = NxMap.from_geofence(
+        ...     geofence,
+        ...     network_type=NetworkType.DRIVE,
+        ...     xy=True  # Use Web Mercator for accurate distances
+        ... )
+        >>>
+        >>> # Use the map for routing and queries
+        >>> nearest = road_map.nearest_road(coordinate)
+        >>> path = road_map.shortest_path(origin, destination)
+        >>>
+        >>> # Save for later use
+        >>> road_map.to_file('network.pickle')
     """
 
     def __init__(self, graph: nx.MultiDiGraph):
@@ -158,13 +192,30 @@ class NxMap(MapInterface):
 
     def set_road_attributes(self, attributes: Dict[RoadId, Dict[str, Any]]):
         """
-        Set the attributes of the roads in the map
+        Add or update attributes for specific roads in the network.
+
+        This allows you to enrich the road network with custom data like measured speeds,
+        traffic volumes, pavement conditions, etc. The new attributes become part of the
+        road metadata and can be accessed in matching results.
 
         Args:
-            attributes: A dictionary mapping road ids to dictionaries of attributes
+            attributes: A dictionary mapping RoadId objects to dictionaries of attribute name-value pairs.
 
-        Returns:
-            None
+        Note:
+            After setting attributes, the internal spatial index is rebuilt. For bulk
+            updates, it's more efficient to set all attributes in a single call.
+
+        Examples:
+            >>> # Add custom speed data
+            >>> speed_data = {
+            ...     RoadId('1', '2', 0): {'measured_speed_mph': 32.5},
+            ...     RoadId('2', '3', 0): {'measured_speed_mph': 28.3}
+            ... }
+            >>> road_map.set_road_attributes(speed_data)
+            >>>
+            >>> # Access the new attributes
+            >>> road = road_map.road_by_id(RoadId('1', '2', 0))
+            >>> print(road.metadata['measured_speed_mph'])  # 32.5
         """
         for attrs in attributes.values():
             for attr_name in attrs.keys():
@@ -183,13 +234,26 @@ class NxMap(MapInterface):
     @classmethod
     def from_file(cls, file: Union[str, Path]) -> NxMap:
         """
-        Build a NxMap instance from a file
+        Load a NxMap from a saved file.
+
+        Supports loading from pickle (.pickle) or JSON (.json) formats. Pickle files
+        are smaller and faster to load, while JSON files are human-readable and portable.
 
         Args:
-            file: The graph pickle file to load the graph from
+            file: Path to the saved map file (must have .pickle or .json extension)
 
         Returns:
-            A NxMap instance
+            A NxMap instance loaded from the file
+
+        Raises:
+            TypeError: If the file extension is not .pickle or .json
+
+        Examples:
+            >>> # Load from pickle (recommended for large networks)
+            >>> road_map = NxMap.from_file('network.pickle')
+            >>>
+            >>> # Load from JSON
+            >>> road_map = NxMap.from_file('network.json')
         """
         p = Path(file)
         if p.suffix == ".pickle":
@@ -212,18 +276,47 @@ class NxMap(MapInterface):
         filter_to_largest_component: bool = True,
     ) -> NxMap:
         """
-        Read an OSM network graph into a NxMap
+        Download and create a NxMap from OpenStreetMap data within a geofence.
+
+        This method uses OSMnx to download road network data from OpenStreetMap for the
+        specified geographic area. It's the primary way to create maps from online sources.
 
         Args:
-            geofence: the geofence to clip the graph to
-            xy: whether to use xy coordinates or lat/lon
-            network_type: the network type to use for the graph
-            custom_filter: a custom filter to pass to osmnx like '["highway"~"motorway|primary"]'
-            additional_metadata_keys: additional keys to preserve in road metadata like '["maxspeed", "highway"]'
-            filter_to_largest_component: if True, keep only the largest strongly connected component; if False, keep all components (may result in routing failures between disconnected components)
+            geofence: A Geofence defining the area to download. Must be in EPSG:4326 (lat/lon).
+            xy: If True, convert the network to Web Mercator (EPSG:3857) for accurate distance calculations. If False, keep in EPSG:4326. Default is True.
+            network_type: The type of road network to download. Options include DRIVE, WALK, BIKE, DRIVE_SERVICE, ALL, etc. Default is DRIVE.
+            custom_filter: A custom OSMnx filter string for advanced queries. Example: '["highway"~"motorway|primary"]' for only major roads.
+            additional_metadata_keys: Set or list of OSM tag keys to preserve in road metadata. Example: {'maxspeed', 'highway', 'name', 'surface'}
+            filter_to_largest_component: If True (default), keep only the largest strongly connected component to ensure routing works. If False, keep all components (may cause routing failures between disconnected parts).
 
         Returns:
-            a NxMap
+            A new NxMap with roads downloaded from OpenStreetMap
+
+        Raises:
+            TypeError: If the geofence is not in EPSG:4326
+            MapException: If OSMnx is not installed
+
+        Examples:
+            >>> from mappymatch.maps.nx import NxMap, NetworkType
+            >>> from mappymatch.constructs.geofence import Geofence
+            >>>
+            >>> # Download driving network for a city
+            >>> geofence = Geofence.from_geojson('city_boundary.geojson')
+            >>> road_map = NxMap.from_geofence(geofence, network_type=NetworkType.DRIVE)
+            >>>
+            >>> # Download with additional metadata
+            >>> road_map = NxMap.from_geofence(
+            ...     geofence,
+            ...     network_type=NetworkType.DRIVE,
+            ...     additional_metadata_keys={'maxspeed', 'lanes', 'name'}
+            ... )
+            >>>
+            >>> # Custom filter for only highways
+            >>> road_map = NxMap.from_geofence(
+            ...     geofence,
+            ...     network_type=NetworkType.DRIVE,
+            ...     custom_filter='["highway"~"motorway|trunk|primary"]'
+            ... )
         """
         if geofence.crs != LATLON_CRS:
             raise TypeError(
@@ -246,10 +339,24 @@ class NxMap(MapInterface):
 
     def to_file(self, outfile: Union[str, Path]):
         """
-        Save the graph to a pickle file
+        Save the map to a file for later use.
+
+        Saves the entire NxMap including the graph structure, geometries, CRS, and all
+        metadata. Supports pickle (.pickle) and JSON (.json) formats.
 
         Args:
-            outfile: The file to save the graph to
+            outfile: Path where the file should be saved (extension determines format:
+                .pickle for binary pickle format, .json for JSON format)
+
+        Raises:
+            TypeError: If the file extension is not .pickle or .json
+
+        Examples:
+            >>> # Save as pickle (recommended - faster and smaller)
+            >>> road_map.to_file('network.pickle')
+            >>>
+            >>> # Save as JSON (portable and human-readable)
+            >>> road_map.to_file('network.json')
         """
         outfile = Path(outfile)
 

@@ -18,10 +18,15 @@ log = logging.getLogger(__name__)
 
 class CuttingPoint(NamedTuple):
     """
-    A cutting point represents where the LCSS algorithm cuts the trace into a sub-segment.
+    Represents a location where the LCSS algorithm splits a trajectory into sub-segments.
+
+    Cutting points are identified during the iterative refinement process as locations where
+    the GPS trajectory deviates significantly from the candidate path. Splitting at these
+    points allows the algorithm to find better local matches.
 
     Attributes:
-        trace_index: An index of where to cut the trace
+        trace_index: The integer index in the trace where the cut should be made.
+            This indexes into the trace's coordinate list.
     """
 
     trace_index: Union[signedinteger, int]
@@ -29,14 +34,21 @@ class CuttingPoint(NamedTuple):
 
 class TrajectorySegment(NamedTuple):
     """
-    Represents a pairing of a trace and candidate path
+    Represents a pairing of a GPS trace segment with a candidate path through the road network.
+
+    TrajectorySegments are the core data structure used by the LCSS matcher. Each segment
+    contains a portion of the GPS trace, a candidate path through the road network, matching
+    results, a similarity score, and potential cutting points for further refinement.
+
+    During the iterative LCSS algorithm, segments are scored, split at cutting points, and
+    merged to find the best overall match between the GPS trajectory and the road network.
 
     Attributes:
-        trace: The trace in the segment
-        path: The candidate path in the segment
-        matches: The matches between the trace and the path
-        score: The similarity score between the trace and the path
-        cutting_points: The points where the trace and path are to be cut
+        trace: The GPS trace segment being matched
+        path: The candidate path through the road network (list of Road objects)
+        matches: List of Match objects linking each GPS point to a road. Empty until score_and_match is called.
+        score: The LCSS similarity score between trace and path (0-1). 0 until scored.
+        cutting_points: List of CuttingPoint objects indicating where to split this segment for further refinement. Empty until compute_cutting_points is called.
     """
 
     trace: Trace
@@ -95,14 +107,28 @@ class TrajectorySegment(NamedTuple):
         max_distance: float,
     ) -> TrajectorySegment:
         """
-        Computes the score of a trace, pair matching and also matches the coordinates to the nearest road.
+        Compute the LCSS similarity score and match GPS points to road segments.
+
+        This method implements the core LCSS (Longest Common Subsequence) algorithm for
+        trajectory matching. It computes a similarity score between the GPS trace and
+        the candidate path based on point-to-path distances, and simultaneously matches
+        each GPS coordinate to its nearest road in the path.
+
+        The LCSS similarity score ranges from 0 (no similarity) to 1 (perfect match),
+        with higher scores indicating better alignment between the trajectory and path.
 
         Args:
-            distance_epsilon: The distance threshold for matching
-            max_distance: The maximum distance between the trace and the path
+            distance_epsilon: The distance threshold (in meters) for similarity. GPS points
+                within this distance of the path contribute positively to the score. Points
+                farther away contribute zero.
+            max_distance: The maximum distance (in meters) for matching. GPS points beyond
+                this distance from the nearest road are left unmatched (road=None, distance=inf).
 
         Returns:
-            The updated trajectory segment with a score and matches
+            A new TrajectorySegment with populated matches list and computed score
+
+        Raises:
+            Exception: If the trace has 0 points (edge case that cannot be matched)
         """
         trace = self.trace
         path = self.path
@@ -176,17 +202,31 @@ class TrajectorySegment(NamedTuple):
         random_cuts: int,
     ) -> TrajectorySegment:
         """
-        Computes the cutting points for a trajectory segment by:
-         - computing the furthest point
-         - adding points that are close to the distance epsilon
+        Identify locations where the trajectory should be split for refinement.
+
+        Cutting points are locations where the GPS trace deviates from the candidate path,
+        suggesting that splitting the trajectory at these points and computing separate
+        paths for each segment may yield better matches.
+
+        The method identifies cutting points by:
+        1. Finding the point with maximum distance from the matched path (highest deviation)
+        2. Finding points near the distance_epsilon threshold (borderline matches)
+        3. Optionally adding random points for exploration
+        4. Handling edge cases (no path, circular routes, etc.)
+
+        Adjacent cutting points are compressed to avoid splitting too finely, and cutting
+        points at the start/end of the trace are removed (can't split there).
 
         Args:
-            distance_epsilon: The distance threshold for matching
-            cutting_thresh: The threshold for cutting the trace
-            random_cuts: The number of random cuts to add
+            distance_epsilon: The distance threshold (in meters) used for matching.
+                Points near this threshold are candidates for cutting.
+            cutting_thresh: The distance tolerance (in meters) around distance_epsilon.
+                Points within cutting_thresh of distance_epsilon are marked as cutting points.
+            random_cuts: Number of random cutting points to add for exploration.
+                Typically 0 for deterministic results.
 
         Returns:
-            The updated trajectory segment with cutting points
+            A new TrajectorySegment with populated cutting_points list
         """
         cutting_points = []
 

@@ -22,15 +22,24 @@ def join_segment(
     road_map: MapInterface, a: TrajectorySegment, b: TrajectorySegment
 ) -> TrajectorySegment:
     """
-    Join two trajectory segments together, attempting to route between them if needed.
+    Join two trajectory segments together, routing between them if there's a gap.
+
+    This function concatenates two trajectory segments end-to-end. If the paths don't
+    connect directly (i.e., the end junction of segment A doesn't match the start junction
+    of segment B), it attempts to find a shortest path to bridge the gap.
+
+    Used during the LCSS algorithm after splitting segments to recombine them into a
+    complete trajectory.
 
     Args:
-        road_map: The road map to use for routing
-        a: The first trajectory segment
-        b: The second trajectory segment
+        road_map: The road network used for finding connecting paths
+        a: The first trajectory segment (will be the start of the combined segment)
+        b: The second trajectory segment (will be the end of the combined segment)
 
     Returns:
-        A new trajectory segment combining both segments
+        A new TrajectorySegment with combined traces and paths. If a connecting path
+        is found, it's inserted between the two path segments. If no path exists
+        (disconnected network components), the paths are simply concatenated.
     """
     new_traces = a.trace + b.trace
     new_path = a.path + b.path
@@ -66,14 +75,19 @@ def new_path(
     trace: Trace,
 ) -> List[Road]:
     """
-    Computes a shortest path and returns the path
+    Compute a candidate path through the road network for a GPS trace.
+
+    This computes the shortest path from the first coordinate to the last coordinate
+    in the trace, using the road network's shortest path algorithm. This path serves
+    as the initial candidate path for LCSS matching.
 
     Args:
-        road_map: the road map to match to
-        trace: the trace to match
+        road_map: The road network to route on
+        trace: The GPS trace to compute a path for
 
     Returns:
-        the path that most closely matches the trace
+        A list of Road objects representing the shortest path from the trace's first
+        to last coordinate. Returns an empty list if the trace has fewer than 1 coordinate.
     """
     if len(trace.coords) < 1:
         return []
@@ -91,17 +105,28 @@ def split_trajectory_segment(
     trajectory_segment: TrajectorySegment,
 ) -> List[TrajectorySegment]:
     """
-    Splits a trajectory segment based on the provided cutting points.
+    Split a trajectory segment at its cutting points into multiple sub-segments.
 
-    Merge back any segments that are too short
+    This is a core operation in the LCSS algorithm. It divides a trajectory at identified
+    cutting points, computes new candidate paths for each sub-segment, and merges any
+    resulting segments that are too short (fewer than 2 trace points or 1 path edge).
+
+    The splitting process helps refine matches by allowing different parts of the trajectory
+    to follow different paths through the network.
 
     Args:
-        road_map: the road map to match to
-        trajectory_segment: the trajectory segment to split
-        distance_epsilon: the distance epsilon
+        road_map: The road network used to compute paths for the new segments
+        trajectory_segment: The segment to split, must have cutting_points populated
 
     Returns:
-        a list of split segments or the original segment if it can't be split
+        A list of new TrajectorySegments created by splitting at cutting points.
+        Returns the original segment unchanged if:
+        - The trace has fewer than 2 points
+        - No cutting points are defined
+        - Splitting would not improve the match
+
+        Short segments (< 2 trace points or < 1 path edge) are automatically merged
+        with adjacent segments.
     """
     trace = trajectory_segment.trace
     cutting_points = trajectory_segment.cutting_points
@@ -193,13 +218,23 @@ class StationaryIndex(NamedTuple):
 
 def find_stationary_points(trace: Trace) -> List[StationaryIndex]:
     """
-    Find the positional index of all stationary points in a trace
+    Identify groups of consecutive GPS points that represent stationary positions.
+
+    Stationary points occur when a GPS device records multiple positions while not moving,
+    or moving very slowly. These can be caused by waiting at traffic lights, parking, or
+    GPS noise. Identifying them allows the LCSS matcher to handle them specially.
+
+    Points are considered stationary if they are within 0.001 meters (1mm) of the previous
+    point - essentially the same location accounting for floating-point precision.
 
     Args:
-        trace: the trace to find the stationary points in
+        trace: The GPS trace to analyze for stationary points
 
     Returns:
-        a list of stationary indices
+        A list of StationaryIndex objects, each representing a group of consecutive
+        stationary points. Each StationaryIndex contains:
+        - i_index: List of integer indices in the trace
+        - c_index: List of coordinate IDs
     """
     f = trace._frame
     coords = trace.coords
@@ -234,14 +269,19 @@ def drop_stationary_points(
     trace: Trace, stationary_index: List[StationaryIndex]
 ) -> Trace:
     """
-    Drops stationary points from the trace, keeping the first point
+    Remove stationary points from a trace while keeping the first point of each group.
+
+    This is used to simplify traces before matching by collapsing groups of stationary
+    points into single representatives. The LCSS matching is performed on the simplified
+    trace, then stationary points are restored in the final results.
 
     Args:
-        trace: the trace to drop the stationary points from
-        stationary_index: the stationary indices to drop
+        trace: The GPS trace to clean
+        stationary_index: List of StationaryIndex objects identifying stationary point groups (from find_stationary_points)
 
     Returns:
-        the trace with the stationary points dropped
+        A new Trace with duplicate stationary points removed. For each stationary group,
+        only the first point is retained.
     """
     for si in stationary_index:
         trace = trace.drop(si.c_index[1:])
@@ -254,14 +294,22 @@ def add_matches_for_stationary_points(
     stationary_index: List[StationaryIndex],
 ) -> List[Match]:
     """
-    Takes a set of matches and adds duplicate match entries for stationary
+    Restore stationary points to the matched results.
+
+    After matching a simplified trace (with stationary points removed), this function
+    adds back Match objects for all the removed stationary points. Each stationary point
+    gets the same road match as the first point in its group, but retains its original
+    coordinate ID.
+
+    This ensures the final MatchResult has one match for every point in the original trace.
 
     Args:
-        matches: the matches to add the stationary points to
-        stationary_index: the stationary indices to add
+        matches: The matches from matching the simplified trace (without stationary points)
+        stationary_index: List of StationaryIndex objects identifying which points were removed (from find_stationary_points)
 
     Returns:
-        the matches with the stationary points added
+        A new list of Match objects with stationary points restored, maintaining the
+        original trace order and coordinate IDs
     """
     matches = deepcopy(matches)
 

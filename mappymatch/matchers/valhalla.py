@@ -40,7 +40,19 @@ def build_path_from_result(
     edges: List[dict], shape: List[Tuple[float, float]]
 ) -> List[Road]:
     """
-    builds a mappymatch path from the result of a Valhalla map matching request
+    Build a list of Road objects from Valhalla map matching response.
+
+    This parses the 'edges' array from a Valhalla trace_attributes response and converts
+    each edge into a Road object with geometry and metadata.
+
+    Args:
+        edges: List of edge dictionaries from the Valhalla response, containing
+            way_id, begin_shape_index, end_shape_index, speed, length, etc.
+        shape: List of (lon, lat) coordinate tuples representing the matched path,
+            decoded from Valhalla's polyline
+
+    Returns:
+        A list of Road objects representing the matched path through the network
     """
     path = []
     for edge in edges:
@@ -71,7 +83,18 @@ def build_match_result(
     trace: Trace, matched_points: List[dict], path: List[Road]
 ) -> MatchResult:
     """
-    builds a mappymatch MatchResult from the result of a Valhalla map matching request
+    Build a MatchResult from Valhalla map matching response data.
+
+    This combines the Valhalla matched_points array with the parsed path to create
+    Match objects linking each GPS coordinate to its matched road segment.
+
+    Args:
+        trace: The original GPS trace that was submitted for matching
+        matched_points: List of matched point dictionaries from Valhalla response, containing edge_index and distance_from_trace_point for each GPS point
+        path: List of Road objects representing the matched route (from build_path_from_result)
+
+    Returns:
+        A MatchResult containing matches for each coordinate and the full path
     """
     matches = []
     for i, coord in enumerate(trace.coords):
@@ -98,7 +121,52 @@ def build_match_result(
 
 class ValhallaMatcher(MatcherInterface):
     """
-    pings a Valhalla server for map matching
+    Map matcher that uses a Valhalla server for matching GPS traces to road networks.
+
+    Valhalla is an open-source routing engine that provides map matching capabilities.
+    This matcher sends GPS coordinates to a Valhalla server and receives back matched
+    road segments and routing results.
+
+    The matcher communicates with Valhalla's trace_attributes API endpoint, which returns
+    detailed information about matched edges including geometry, speed, and length.
+
+    Args:
+        valhalla_url: The base URL of the Valhalla trace_attributes endpoint.
+            Default is a public demo server (not for production use).
+        cost_model: The routing cost model to use ('auto', 'bicycle', 'pedestrian', etc.).
+            Default is 'auto'.
+        shape_match: The shape matching algorithm ('map_snap', 'edge_walk', 'walk_or_snap').
+            Default is 'map_snap'.
+        attributes: Additional edge attributes to request from Valhalla beyond the required ones.
+            Default includes 'edge.length' and 'edge.speed'.
+
+    Attributes:
+        url_base: The Valhalla API endpoint URL
+        cost_model: The routing cost model being used
+        shape_match: The shape matching algorithm being used
+        attributes: List of all requested edge attributes (required + additional)
+
+    Examples:
+        >>> from mappymatch.matchers.valhalla import ValhallaMatcher
+        >>>
+        >>> # Use default demo server (for testing only)
+        >>> matcher = ValhallaMatcher()
+        >>> result = matcher.match_trace(trace)
+        >>>
+        >>> # Use your own Valhalla instance
+        >>> matcher = ValhallaMatcher(
+        ...     valhalla_url='http://localhost:8002/trace_attributes',
+        ...     cost_model='bicycle'
+        ... )
+        >>>
+        >>> # Request additional attributes
+        >>> matcher = ValhallaMatcher(
+        ...     attributes=['edge.length', 'edge.speed', 'edge.names', 'edge.surface']
+        ... )
+
+    Note:
+        The default demo server is rate-limited and should only be used for testing.
+        For production use, deploy your own Valhalla instance.
     """
 
     def __init__(
@@ -116,6 +184,38 @@ class ValhallaMatcher(MatcherInterface):
         self.attributes = all_attributes
 
     def match_trace(self, trace: Trace) -> MatchResult:
+        """
+        Match a GPS trace to roads using the Valhalla map matching service.
+
+        This method sends the trace to a Valhalla server, which performs map matching
+        and returns the matched path and statistics. The trace is automatically converted
+        to EPSG:4326 (lat/lon) if needed, as required by Valhalla.
+
+        Args:
+            trace: The GPS trace to match. Will be converted to EPSG:4326 if in a different CRS.
+
+        Returns:
+            A MatchResult containing:
+            - matches: List of Match objects linking each GPS point to a road
+            - path: List of Road objects representing the matched route
+
+        Raises:
+            requests.HTTPError: If the Valhalla server returns an error response
+
+        Examples:
+            >>> matcher = ValhallaMatcher()
+            >>> trace = Trace.from_csv('gps_data.csv')
+            >>> result = matcher.match_trace(trace)
+            >>>
+            >>> # Access results
+            >>> print(f"Matched {len(result.matches)} points")
+            >>> print(f"Path has {len(result.path)} road segments")
+            >>>
+            >>> # Check road metadata from Valhalla
+            >>> for road in result.path[:5]:
+            ...     print(f"Speed: {road.metadata['speed_mph']} mph")
+            ...     print(f"Length: {road.metadata['length_miles']} miles")
+        """
         if not trace.crs == LATLON_CRS:
             trace = trace.to_crs(LATLON_CRS)
 

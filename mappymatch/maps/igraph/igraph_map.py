@@ -31,12 +31,29 @@ DEFAULT_EDGE_ID_NAME = "edge_id"
 
 class IGraphMap(MapInterface):
     """
-    A road map that uses an igraph graph to represent its roads.
+    A road network map implementation using igraph for high-performance graph operations.
+
+    IGraphMap wraps an igraph.Graph to represent a road network, providing potentially
+    faster performance than NetworkX for very large networks. It uses an R-tree spatial
+    index for efficient nearest-neighbor searches and supports both distance and time-based routing.
+
+    The underlying igraph must have:
+    - A pyproj CRS stored in graph['crs']
+    - Road geometries (LineStrings) stored as edge attributes
+    - Node IDs stored in vertex attributes
+    - Edge IDs (keys) for multi-edges between the same nodes
+    - Optional distance and time weights for routing
+
+    This implementation is particularly useful when working with very large road networks
+    where performance is critical.
 
     Attributes:
-        ig: The igraph graph that represents the road map
-        road_mapping: A mapping from road ids to igraph edge ids
+        g: The igraph.Graph representing the road network
+        road_mapping: A dictionary mapping RoadId tuples to igraph edge indices
         crs: The coordinate reference system of the map
+
+    Note:
+        igraph must be installed to use this class. Install with: pip install igraph
     """
 
     def __init__(self, graph: ig.Graph):

@@ -33,7 +33,6 @@ sphinx:
     - "sphinx.ext.autodoc"
     - "sphinx.ext.autosummary"
     - "sphinx.ext.viewcode"
-    - "sphinx_autodoc_typehints"
     - "sphinxcontrib.autoyaml"
     - "sphinxcontrib.mermaid"
   config:
@@ -55,5 +54,4 @@ sphinx:
       member-order: bysource
       undoc-members: true
       private-members: false
-    autodoc_typehints: both
     mermaid_version: "10.8"

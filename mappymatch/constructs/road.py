@@ -28,14 +28,17 @@ class RoadId(NamedTuple):
 
 class Road(NamedTuple):
     """
-    Represents a road that can be matched to;
+    Represents a road segment in the road network that can be matched to GPS trajectories.
+
+    A Road is an immutable object representing a directional edge in a road network graph.
+    Roads have a unique identifier (composed of start/end junctions and a key), a geometry
+    (typically a LineString), and optional metadata for storing additional attributes like
+    speed limits, road names, etc.
 
     Attributes:
-        road_id: The unique identifier for this road
-        geom: The geometry of this road
-        origin_junction_id: The unique identifier of the origin junction of this road
-        destination_junction_id: The unique identifier of the destination junction of this road
-        metadata: an optional dictionary for storing additional metadata
+        road_id: A RoadId tuple uniquely identifying this road segment (start, end, key)
+        geom: The Shapely LineString geometry representing the road's path
+        metadata: An optional dictionary for storing additional road attributes such as speed limits, road names, surface type, etc.
     """
 
     road_id: RoadId
@@ -45,7 +48,14 @@ class Road(NamedTuple):
 
     def to_dict(self) -> Dict[str, Any]:
         """
-        Convert the road to a dictionary
+        Convert the road to a dictionary representation.
+
+        This creates a dictionary with all road attributes, extracting the origin and
+        destination junction IDs from the road_id for convenience.
+
+        Returns:
+            A dictionary containing the road's attributes with separate keys for
+            origin_junction_id, destination_junction_id, and road_key
         """
         d = self._asdict()
         d["origin_junction_id"] = self.road_id.start
@@ -56,7 +66,16 @@ class Road(NamedTuple):
 
     def to_flat_dict(self) -> Dict[str, Any]:
         """
-        Convert the road to a flat dictionary
+        Convert the road to a flat dictionary with metadata unpacked.
+
+        This method creates a single-level dictionary by unpacking the metadata dictionary
+        and merging it with the road's other attributes. This is useful for creating
+        DataFrames or exporting to formats that don't support nested structures.
+
+        Returns:
+            A flat dictionary with all road attributes and metadata fields at the top level.
+            The 'metadata' key itself is removed.
+
         """
         if self.metadata is None:
             return self.to_dict()
