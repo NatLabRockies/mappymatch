@@ -12,7 +12,7 @@ The current matchers are:
 
 Currently supported map formats are:
 
-- Open Street Maps
+- OpenStreetMap
 
 ## Installation
 
