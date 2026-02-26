@@ -13,6 +13,7 @@
    crs
    exceptions
    geo
+   keys
    plot
    process_trace
    url

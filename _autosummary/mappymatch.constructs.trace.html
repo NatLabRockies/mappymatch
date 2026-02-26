@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=30a733bc"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -53,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="mappymatch.constructs.road" href="mappymatch.constructs.road.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="python"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,11 +154,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -172,7 +183,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lcss-example.html">LCSS Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/lcss_example.html">LCSS Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -217,7 +228,16 @@
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.crs.html">mappymatch.utils.crs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.exceptions.html">mappymatch.utils.exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.geo.html">mappymatch.utils.geo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.keys.html">mappymatch.utils.keys</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.geofence.html">mappymatch.utils.plot.geofence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.map.html">mappymatch.utils.plot.map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.matches.html">mappymatch.utils.plot.matches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.path.html">mappymatch.utils.plot.path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trace.html">mappymatch.utils.plot.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trajectory_segment.html">mappymatch.utils.plot.trajectory_segment</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.process_trace.html">mappymatch.utils.process_trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.url.html">mappymatch.utils.url</a></li>
 </ul>
@@ -232,14 +252,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -283,7 +298,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch" target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.constructs.trace.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.constructs.trace.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,16 +398,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -449,24 +472,43 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Trace</span></code></a>(frame)</p></td>
-<td><p>A Trace is a collection of coordinates that represents a trajectory to be matched.</p></td>
+<td><p>A collection of coordinates representing a GPS trajectory or path to be map-matched.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py class">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mappymatch.constructs.trace.</span></span><span class="sig-name descname"><span class="pre">Trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace" title="Link to this definition">#</a></dt>
-<dd><p>A Trace is a collection of coordinates that represents a trajectory to be matched.</p>
-<dl class="simple">
-<dt>Attributes:</dt><dd><p>coords: A list of all the coordinates
-crs: The CRS of the trace
-index: The index of the trace</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mappymatch.constructs.trace.</span></span><span class="sig-name descname"><span class="pre">Trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GeoDataFrame</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace" title="Link to this definition">#</a></dt>
+<dd><p>A collection of coordinates representing a GPS trajectory or path to be map-matched.</p>
+<p>A Trace wraps a GeoDataFrame of point geometries and provides methods for creating,
+manipulating, and transforming GPS trajectories. Traces are the primary input for
+map matching algorithms.</p>
+<p>The underlying GeoDataFrame must have unique indices - duplicate indices will raise
+an IndexError during initialization.</p>
+<dl>
+<dt>Attributes:</dt><dd><p>coords: A list of Coordinate objects representing each point in the trajectory
+crs: The coordinate reference system (CRS) of the trace
+index: The pandas Index from the underlying GeoDataFrame</p>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>frame</strong> (<em>GeoDataFrame</em>)</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.constructs.trace</span><span class="w"> </span><span class="kn">import</span> <span class="n">Trace</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create from a DataFrame with lat/lon columns</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">40.7128</span><span class="p">,</span> <span class="mf">40.7589</span><span class="p">,</span> <span class="mf">40.7614</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">74.0060</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9851</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9776</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create from a GPX file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_gpx</span><span class="p">(</span><span class="s1">&#39;path/to/track.gpx&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Access coordinates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trace</span><span class="p">))</span>  <span class="c1"># Number of points</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">first_coord</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 <dl class="py property">
@@ -478,7 +520,13 @@ index: The index of the trace</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.coords">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">coords</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.coordinate.html#mappymatch.constructs.coordinate.Coordinate" title="mappymatch.constructs.coordinate.Coordinate"><span class="pre">Coordinate</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mappymatch.constructs.trace.Trace.coords" title="Link to this definition">#</a></dt>
-<dd><p>Get coordinates as Coordinate objects.</p>
+<dd><p>Get all coordinates in the trace as Coordinate objects.</p>
+<p>This property constructs Coordinate objects from the underlying GeoDataFrame,
+preserving the index values as coordinate IDs. The result is cached for performance.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>A list of Coordinate objects, one for each point in the trace, ordered by the trace index</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
@@ -489,225 +537,254 @@ index: The index of the trace</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.from_geo_dataframe">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_geo_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_geo_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_geo_dataframe" title="Link to this definition">#</a></dt>
-<dd><p>Builds a trace from a geopandas dataframe</p>
-<p>Expects the dataframe to have geometry column</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_geo_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">GeoDataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_geo_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_geo_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Create a trace from a GeoPandas GeoDataFrame.</p>
+<p>The GeoDataFrame must contain a geometry column with Point geometries representing
+the GPS trajectory. Additional columns are discarded - only the geometry and index
+are retained.</p>
+<dl>
+<dt>Args:</dt><dd><p>frame: A GeoDataFrame with Point geometries representing the trajectory. Must have a valid CRS and unique index values.
+xy: If True, reproject the trace to Web Mercator (EPSG:3857) for distance calculations. If False, keep the original CRS. Default is True.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>frame</strong> (<em>GeoDataFrame</em>)</p></li>
-<li><p><strong>xy</strong> (<em>bool</em>)</p></li>
-</ul>
+<dt>Returns:</dt><dd><p>A new Trace instance</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>frame: geopandas dataframe with _one_ trace
-xy: should the trace be projected to epsg 3857?</p>
-</dd>
-<dt>Returns:</dt><dd><p>The trace built from the geopandas dataframe</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a GeoDataFrame with point geometries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">74.0060</span><span class="p">,</span> <span class="mf">40.7128</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">73.9851</span><span class="p">,</span> <span class="mf">40.7589</span><span class="p">)],</span>
+<span class="gp">... </span>    <span class="n">crs</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_geo_dataframe</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.from_dataframe">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'latitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'longitude'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_dataframe" title="Link to this definition">#</a></dt>
-<dd><p>Builds a trace from a pandas dataframe</p>
-<p>Expects the dataframe to have latitude / longitude information in the epsg 4326 format</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'latitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'longitude'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_dataframe" title="Link to this definition">#</a></dt>
+<dd><p>Create a trace from a pandas DataFrame with latitude/longitude columns.</p>
+<p>This is one of the most common ways to create a Trace from GPS data. The DataFrame
+must contain columns with latitude and longitude values in WGS84 (EPSG:4326) format.</p>
+<dl>
+<dt>Args:</dt><dd><p>dataframe: A pandas DataFrame containing GPS coordinates in EPSG:4326 format
+xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain lat/lon coordinates. Default is True.
+lat_column: The name of the column containing latitude values. Default is &quot;latitude&quot;.
+lon_column: The name of the column containing longitude values. Default is &quot;longitude&quot;.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>dataframe</strong> (<em>DataFrame</em>)</p></li>
-<li><p><strong>xy</strong> (<em>bool</em>)</p></li>
-<li><p><strong>lat_column</strong> (<em>str</em>)</p></li>
-<li><p><strong>lon_column</strong> (<em>str</em>)</p></li>
-</ul>
+<dt>Returns:</dt><dd><p>A new Trace instance</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>dataframe: pandas dataframe with _one_ trace
-xy: should the trace be projected to epsg 3857?
-lat_column: the name of the latitude column
-lon_column: the name of the longitude column</p>
-</dd>
-<dt>Returns:</dt><dd><p>The trace built from the pandas dataframe</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create from a DataFrame with default column names</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">40.7128</span><span class="p">,</span> <span class="mf">40.7589</span><span class="p">,</span> <span class="mf">40.7614</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">74.0060</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9851</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9776</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use custom column names</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df_custom</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<span class="gp">... </span>    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">40.7128</span><span class="p">,</span> <span class="mf">40.7589</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">74.0060</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.9851</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df_custom</span><span class="p">,</span> <span class="n">lat_column</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">lon_column</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.from_gpx">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_gpx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_gpx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_gpx" title="Link to this definition">#</a></dt>
-<dd><p>Builds a trace from a gpx file.</p>
-<p>Expects the file to have simple gpx structure: a sequence of lat, lon pairs</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_gpx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_gpx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_gpx" title="Link to this definition">#</a></dt>
+<dd><p>Create a trace from a GPX (GPS Exchange Format) file.</p>
+<p>Parses GPX track data and extracts latitude/longitude coordinates from trackpoints.
+This method expects a simple GPX structure with a sequence of lat/lon coordinate pairs.</p>
+<dl>
+<dt>Args:</dt><dd><p>file: Path to the GPX file (as string or Path object)
+xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain lat/lon coordinates. Default is True.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>)</p></li>
-<li><p><strong>xy</strong> (<em>bool</em>)</p></li>
-</ul>
+<dt>Returns:</dt><dd><p>A new Trace instance with coordinates extracted from the GPX file</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>file: the gpx file
-xy: should the trace be projected to epsg 3857?</p>
+<dt>Raises:</dt><dd><p>FileNotFoundError: If the specified file does not exist
+TypeError: If the file does not have a .gpx extension</p>
 </dd>
-<dt>Returns:</dt><dd><p>The trace built from the gpx file</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load a GPX track from a file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_gpx</span><span class="p">(</span><span class="s1">&#39;morning_run.gpx&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Keep in lat/lon instead of projecting</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace_latlon</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_gpx</span><span class="p">(</span><span class="s1">&#39;bike_ride.gpx&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.from_csv">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'latitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'longitude'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_csv" title="Link to this definition">#</a></dt>
-<dd><p>Builds a trace from a csv file.</p>
-<p>Expects the file to have latitude / longitude information in the epsg 4326 format</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lat_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'latitude'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lon_column</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'longitude'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_csv" title="Link to this definition">#</a></dt>
+<dd><p>Create a trace from a CSV file containing latitude/longitude coordinates.</p>
+<p>The CSV file must contain columns with latitude and longitude values in WGS84
+(EPSG:4326) format. The DataFrame index will be used as coordinate IDs.</p>
+<dl>
+<dt>Args:</dt><dd><p>file: Path to the CSV file (as string or Path object)
+xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain lat/lon coordinates. Default is True.
+lat_column: The name of the column containing latitude values. Default is &quot;latitude&quot;.
+lon_column: The name of the column containing longitude values. Default is &quot;longitude&quot;.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>)</p></li>
-<li><p><strong>xy</strong> (<em>bool</em>)</p></li>
-<li><p><strong>lat_column</strong> (<em>str</em>)</p></li>
-<li><p><strong>lon_column</strong> (<em>str</em>)</p></li>
-</ul>
+<dt>Returns:</dt><dd><p>A new Trace instance with coordinates from the CSV file</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>file: the csv file
-xy: should the trace be projected to epsg 3857?
-lat_column: the name of the latitude column
-lon_column: the name of the longitude column</p>
+<dt>Raises:</dt><dd><p>FileNotFoundError: If the specified file does not exist
+TypeError: If the file does not have a .csv extension
+ValueError: If the specified lat/lon columns are not found in the CSV</p>
 </dd>
-<dt>Returns:</dt><dd><p>The trace built from the csv file</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load from CSV with default column names</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;gps_data.csv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load with custom column names</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;track.csv&#39;</span><span class="p">,</span> <span class="n">lat_column</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="n">lon_column</span><span class="o">=</span><span class="s1">&#39;lng&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.from_parquet">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_parquet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_parquet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_parquet" title="Link to this definition">#</a></dt>
-<dd><p>Read a trace from a parquet file</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>file: the parquet file
-xy: should the trace be projected to epsg 3857?</p>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_parquet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_parquet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_parquet" title="Link to this definition">#</a></dt>
+<dd><p>Create a trace from a GeoParquet file.</p>
+<p>GeoParquet is a columnar storage format for geospatial data. The file must contain
+a geometry column with Point geometries and a valid CRS.</p>
+<dl>
+<dt>Args:</dt><dd><p>file: Path to the GeoParquet file (as string or Path object)
+xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain the original CRS. Default is True.</p>
 </dd>
-<dt>Returns:</dt><dd><p>The trace built from the parquet file</p>
+<dt>Returns:</dt><dd><p>A new Trace instance with coordinates from the GeoParquet file</p>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>)</p></li>
-<li><p><strong>xy</strong> (<em>bool</em>)</p></li>
-</ul>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load from a GeoParquet file</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_parquet</span><span class="p">(</span><span class="s1">&#39;trajectory.parquet&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.from_geojson">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_geojson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_property</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_geojson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_geojson" title="Link to this definition">#</a></dt>
-<dd><p>Reads a trace from a geojson file;
-If index_property is not specified, this will set any property columns as the index.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>file: the geojson file
-index_property: the name of the property to use as the index
-xy: should the trace be projected to epsg 3857?</p>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_geojson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index_property</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.from_geojson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.from_geojson" title="Link to this definition">#</a></dt>
+<dd><p>Create a trace from a GeoJSON file containing Point features.</p>
+<p>The GeoJSON file should contain Point geometries representing the GPS trajectory.
+If index_property is specified, that property will be used as the DataFrame index;
+otherwise, all non-geometry properties will be combined to create the index.</p>
+<dl>
+<dt>Args:</dt><dd><p>file: Path to the GeoJSON file (as string or Path object)
+index_property: The name of a GeoJSON property to use as the DataFrame index. If None, all properties excluding geometry will be used as index columns. Default is None.
+xy: If True, reproject to Web Mercator (EPSG:3857) for accurate distance calculations. If False, maintain the original CRS. Default is True.</p>
 </dd>
-<dt>Returns:</dt><dd><p>The trace built from the geojson file</p>
+<dt>Returns:</dt><dd><p>A new Trace instance with coordinates from the GeoJSON file</p>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>)</p></li>
-<li><p><strong>index_property</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
-<li><p><strong>xy</strong> (<em>bool</em>)</p></li>
-</ul>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load from GeoJSON, using all properties as index</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_geojson</span><span class="p">(</span><span class="s1">&#39;path.geojson&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use a specific property as index</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_geojson</span><span class="p">(</span><span class="s1">&#39;points.geojson&#39;</span><span class="p">,</span> <span class="n">index_property</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.downsample">
-<span class="sig-name descname"><span class="pre">downsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npoints</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.downsample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.downsample" title="Link to this definition">#</a></dt>
-<dd><p>Downsample the trace to a given number of points</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
+<span class="sig-name descname"><span class="pre">downsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">npoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.downsample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.downsample" title="Link to this definition">#</a></dt>
+<dd><p>Downsample the trace to a specified number of evenly-spaced points.</p>
+<p>This method uses linear interpolation across the trace indices to select a subset
+of points that are approximately evenly distributed along the trajectory.</p>
+<dl>
+<dt>Args:</dt><dd><p>npoints: The target number of points in the downsampled trace</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>npoints</strong> (<em>int</em>)</p>
+<dt>Returns:</dt><dd><p>A new Trace with approximately npoints evenly-distributed points</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>npoints: the number of points to downsample to</p>
-</dd>
-<dt>Returns:</dt><dd><p>The downsampled trace</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Reduce a 1000-point trace to 100 points</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">long_trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;detailed_track.csv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">long_trace</span><span class="p">))</span>  <span class="c1"># 1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">short_trace</span> <span class="o">=</span> <span class="n">long_trace</span><span class="o">.</span><span class="n">downsample</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">short_trace</span><span class="p">))</span>  <span class="c1"># 100</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.drop">
-<span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typing.List</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.drop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.drop" title="Link to this definition">#</a></dt>
-<dd><p>Remove points from the trace specified by the index parameter</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
+<span class="sig-name descname"><span class="pre">drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">typing.List</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.drop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.drop" title="Link to this definition">#</a></dt>
+<dd><p>Remove points from the trace by their index values.</p>
+<p>This method creates a new trace with specified points removed. The index parameter
+should contain the DataFrame index values (not positional integers) of the points
+to remove.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>index: A list of index values identifying the points to remove. These should be</dt><dd><p>values from the trace's DataFrame index, not integer positions.</p>
 </dd>
 </dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>index: the index of the points to drop (0 based index)</p>
 </dd>
-<dt>Returns:</dt><dd><p>The trace with the points removed</p>
+<dt>Returns:</dt><dd><p>A new Trace with the specified points removed</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove points with specific index values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># df has index [0, 1, 2, 3, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cleaned_trace</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># Removes points at index 1 and 3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cleaned_trace</span><span class="p">))</span>  <span class="c1"># 3 (originally 5, removed 2)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.to_crs">
-<span class="sig-name descname"><span class="pre">to_crs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_crs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.to_crs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.to_crs" title="Link to this definition">#</a></dt>
-<dd><p>Converts the crs of a trace to a new crs</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>new_crs</strong> (<em>CRS</em>)</p>
+<span class="sig-name descname"><span class="pre">to_crs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CRS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.to_crs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.to_crs" title="Link to this definition">#</a></dt>
+<dd><p>Transform the trace to a different coordinate reference system (CRS).</p>
+<p>This method reprojects all coordinates in the trace to the specified CRS.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>new_crs: The target CRS. Can be a pyproj.CRS object, EPSG code string</dt><dd><p>(e.g., 'EPSG:4326'), or any format accepted by pyproj.CRS()</p>
 </dd>
 </dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>new_crs: the new crs to convert to</p>
 </dd>
-<dt>Returns:</dt><dd><p>A new trace with the new crs</p>
+<dt>Returns:</dt><dd><p>A new Trace with all coordinates transformed to the target CRS</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Convert from Web Mercator to WGS84 lat/lon</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace_xy</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># In EPSG:3857</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace_latlon</span> <span class="o">=</span> <span class="n">trace_xy</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;EPSG:4326&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Convert to a UTM zone</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pyproj</span><span class="w"> </span><span class="kn">import</span> <span class="n">CRS</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">utm_crs</span> <span class="o">=</span> <span class="n">CRS</span><span class="p">(</span><span class="s1">&#39;EPSG:32618&#39;</span><span class="p">)</span>  <span class="c1"># UTM Zone 18N</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace_utm</span> <span class="o">=</span> <span class="n">trace_latlon</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">utm_crs</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.constructs.trace.Trace.to_geojson">
-<span class="sig-name descname"><span class="pre">to_geojson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.to_geojson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.to_geojson" title="Link to this definition">#</a></dt>
-<dd><p>Write the trace to a geojson file</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>file: the file to write to</p>
+<span class="sig-name descname"><span class="pre">to_geojson</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/constructs/trace.html#Trace.to_geojson"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.constructs.trace.Trace.to_geojson" title="Link to this definition">#</a></dt>
+<dd><p>Write the trace to a GeoJSON file.</p>
+<p>This exports the trace as a GeoJSON FeatureCollection where each point is a Feature
+with Point geometry. The CRS information and any index data are preserved.</p>
+<dl>
+<dt>Args:</dt><dd><p>file: Path where the GeoJSON file should be written (as string or Path object)</p>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>)</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;input.csv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span><span class="o">.</span><span class="n">to_geojson</span><span class="p">(</span><span class="s1">&#39;output.geojson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -771,8 +848,7 @@ xy: should the trace be projected to epsg 3857?</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -811,7 +887,7 @@ xy: should the trace be projected to epsg 3857?</p>
   <div class="footer-item">
     
 <p class="component-author">
-By National Renewable Energy Laboratory
+By National Laboratory of the Rockies
 </p>
 
   </div>
@@ -845,8 +921,8 @@ By National Renewable Energy Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

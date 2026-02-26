@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=30a733bc"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -53,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -64,10 +61,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="mappymatch.utils.url" href="mappymatch.utils.url.html" />
-    <link rel="prev" title="mappymatch.utils.plot" href="mappymatch.utils.plot.html" />
+    <link rel="prev" title="mappymatch.utils.plot.trajectory_segment" href="mappymatch.utils.plot.trajectory_segment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="python"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,11 +154,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -172,7 +183,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lcss-example.html">LCSS Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/lcss_example.html">LCSS Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -217,7 +228,16 @@
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.crs.html">mappymatch.utils.crs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.exceptions.html">mappymatch.utils.exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.geo.html">mappymatch.utils.geo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.keys.html">mappymatch.utils.keys</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.geofence.html">mappymatch.utils.plot.geofence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.map.html">mappymatch.utils.plot.map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.matches.html">mappymatch.utils.plot.matches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.path.html">mappymatch.utils.plot.path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trace.html">mappymatch.utils.plot.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trajectory_segment.html">mappymatch.utils.plot.trajectory_segment</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">mappymatch.utils.process_trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.url.html">mappymatch.utils.url</a></li>
 </ul>
@@ -232,14 +252,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -283,7 +298,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch" target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.utils.process_trace.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.utils.process_trace.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,16 +398,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -435,59 +458,78 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#mappymatch.utils.process_trace.remove_bad_start_from_trace" title="mappymatch.utils.process_trace.remove_bad_start_from_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_bad_start_from_trace</span></code></a>(trace, ...)</p></td>
-<td><p>Remove points at the beginning of a trace if it is a gap is too big.</p></td>
+<td><p>Remove leading points from a trace if there's a large gap at the beginning.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#mappymatch.utils.process_trace.split_large_trace" title="mappymatch.utils.process_trace.split_large_trace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">split_large_trace</span></code></a>(trace, ideal_size)</p></td>
-<td><p>Split up a trace into a list of smaller traces.</p></td>
+<td><p>Split a large GPS trace into smaller sub-traces of approximately equal size.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="mappymatch.utils.process_trace.split_large_trace">
-<span class="sig-prename descclassname"><span class="pre">mappymatch.utils.process_trace.</span></span><span class="sig-name descname"><span class="pre">split_large_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal_size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/utils/process_trace.html#split_large_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.utils.process_trace.split_large_trace" title="Link to this definition">#</a></dt>
-<dd><p>Split up a trace into a list of smaller traces.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a>]</span></p>
+<span class="sig-prename descclassname"><span class="pre">mappymatch.utils.process_trace.</span></span><span class="sig-name descname"><span class="pre">split_large_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ideal_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mappymatch/utils/process_trace.html#split_large_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.utils.process_trace.split_large_trace" title="Link to this definition">#</a></dt>
+<dd><p>Split a large GPS trace into smaller sub-traces of approximately equal size.</p>
+<p>This is useful for processing very long GPS trajectories that might be too large
+for certain matching algorithms or API limits. The trace is divided into segments
+of the specified size, with intelligent handling of the final segment to avoid
+creating very small trailing segments.</p>
+<dl>
+<dt>Args:</dt><dd><p>trace: The GPS trace to split
+ideal_size: The target number of coordinates for each sub-trace. Must be greater than 0.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>trace</strong> (<a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><em>Trace</em></a>)</p></li>
-<li><p><strong>ideal_size</strong> (<em>int</em>)</p></li>
-</ul>
+<dt>Returns:</dt><dd><p>A list of Trace objects. If the trace is already smaller than ideal_size,
+returns a list containing just the original trace. Otherwise, returns multiple
+traces of approximately ideal_size coordinates each.</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>trace: the trace to split.
-ideal_size: the target number of coordinates for each new trace.</p>
+<dt>Raises:</dt><dd><p>ValueError: If ideal_size is 0 or negative</p>
 </dd>
-<dt>Returns:</dt><dd><p>A list of split traces.</p>
+<dt>Note:</dt><dd><p>If the final segment would be 10 points or fewer, it's merged with the previous
+segment to avoid creating very small traces.</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Split a 500-point trace into ~100-point chunks</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">long_trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;long_journey.csv&#39;</span><span class="p">)</span>  <span class="c1"># 500 points</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sub_traces</span> <span class="o">=</span> <span class="n">split_large_trace</span><span class="p">(</span><span class="n">long_trace</span><span class="p">,</span> <span class="n">ideal_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Split into </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sub_traces</span><span class="p">)</span><span class="si">}</span><span class="s2"> traces&quot;</span><span class="p">)</span>  <span class="c1"># 5 traces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sub_traces</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trace </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="si">}</span><span class="s2"> points&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Small traces are returned unchanged</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">small_trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;short_trip.csv&#39;</span><span class="p">)</span>  <span class="c1"># 50 points</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">split_large_trace</span><span class="p">(</span><span class="n">small_trace</span><span class="p">,</span> <span class="n">ideal_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># Just the original trace</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mappymatch.utils.process_trace.remove_bad_start_from_trace">
-<span class="sig-prename descclassname"><span class="pre">mappymatch.utils.process_trace.</span></span><span class="sig-name descname"><span class="pre">remove_bad_start_from_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_threshold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/utils/process_trace.html#remove_bad_start_from_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.utils.process_trace.remove_bad_start_from_trace" title="Link to this definition">#</a></dt>
-<dd><p>Remove points at the beginning of a trace if it is a gap is too big.</p>
-<p>Too big is defined by distance threshold.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></span></p>
+<span class="sig-prename descclassname"><span class="pre">mappymatch.utils.process_trace.</span></span><span class="sig-name descname"><span class="pre">remove_bad_start_from_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/utils/process_trace.html#remove_bad_start_from_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.utils.process_trace.remove_bad_start_from_trace" title="Link to this definition">#</a></dt>
+<dd><p>Remove leading points from a trace if there's a large gap at the beginning.</p>
+<p>This function detects and removes GPS points at the start of a trace that are
+separated by unusually large distances, which often indicates GPS initialization
+errors or teleportation artifacts. It scans from the beginning until it finds a
+pair of consecutive points within the distance threshold.</p>
+<dl>
+<dt>Args:</dt><dd><p>trace: The GPS trace to clean
+distance_threshold: The maximum acceptable distance (in the trace's CRS units, typically meters) between consecutive points. Points separated by more than this distance at the start are removed.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>trace</strong> (<a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><em>Trace</em></a>)</p></li>
-<li><p><strong>distance_threshold</strong> (<em>float</em>)</p></li>
-</ul>
+<dt>Returns:</dt><dd><p>A new Trace with leading outlier points removed. If no large gaps are found,
+returns a trace equivalent to the original.</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>trace: The trace.
-distance_threshold: The distance threshold.</p>
-</dd>
-<dt>Returns:</dt><dd><p>The new trace.</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Remove points with gaps &gt; 500 meters at the start</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_gpx</span><span class="p">(</span><span class="s1">&#39;gps_track.gpx&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cleaned</span> <span class="o">=</span> <span class="n">remove_bad_start_from_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">cleaned</span><span class="p">)</span><span class="si">}</span><span class="s2"> leading points&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Common use case: remove GPS initialization errors</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># GPS might record (0, 0) or last known position before getting fix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;raw_gps.csv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">remove_bad_start_from_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">distance_threshold</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -525,12 +567,12 @@ distance_threshold: The distance threshold.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="mappymatch.utils.plot.html"
+       href="mappymatch.utils.plot.trajectory_segment.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">mappymatch.utils.plot</p>
+        <p class="prev-next-title">mappymatch.utils.plot.trajectory_segment</p>
       </div>
     </a>
     <a class="right-next"
@@ -549,8 +591,7 @@ distance_threshold: The distance threshold.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -575,7 +616,7 @@ distance_threshold: The distance threshold.</p>
   <div class="footer-item">
     
 <p class="component-author">
-By National Renewable Energy Laboratory
+By National Laboratory of the Rockies
 </p>
 
   </div>
@@ -609,8 +650,8 @@ By National Renewable Energy Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

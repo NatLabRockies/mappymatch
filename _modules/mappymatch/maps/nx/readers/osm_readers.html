@@ -15,33 +15,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../../../_static/documentation_options.js?v=30a733bc"></script>
     <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
@@ -52,27 +49,453 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-    <script type="module">
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs";
-window.addEventListener("load", () => mermaid.run());
-</script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);</script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mappymatch/maps/nx/readers/osm_readers';</script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="python"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -88,8 +511,19 @@ window.addEventListener("load", () => mermaid.run());
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../../../search.html"
       method="get">
@@ -97,6 +531,7 @@ window.addEventListener("load", () => mermaid.run());
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -104,8 +539,8 @@ window.addEventListener("load", () => mermaid.run());
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -123,8 +558,7 @@ window.addEventListener("load", () => mermaid.run());
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,11 +588,15 @@ window.addEventListener("load", () => mermaid.run());
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -179,7 +617,7 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../../../lcss-example.html">LCSS Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../examples/lcss_example.html">LCSS Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -224,7 +662,16 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.crs.html">mappymatch.utils.crs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.exceptions.html">mappymatch.utils.exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.geo.html">mappymatch.utils.geo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.html">mappymatch.utils.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.keys.html">mappymatch.utils.keys</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.html">mappymatch.utils.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.geofence.html">mappymatch.utils.plot.geofence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.map.html">mappymatch.utils.plot.map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.matches.html">mappymatch.utils.plot.matches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.path.html">mappymatch.utils.plot.path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.trace.html">mappymatch.utils.plot.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.plot.trajectory_segment.html">mappymatch.utils.plot.trajectory_segment</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.process_trace.html">mappymatch.utils.process_trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../../_autosummary/mappymatch.utils.url.html">mappymatch.utils.url</a></li>
 </ul>
@@ -239,14 +686,9 @@ window.addEventListener("load", () => mermaid.run());
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -290,7 +732,7 @@ window.addEventListener("load", () => mermaid.run());
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch" target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +749,7 @@ window.addEventListener("load", () => mermaid.run());
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch/issues/new?title=Issue%20on%20page%20%2F_modules/mappymatch/maps/nx/readers/osm_readers.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch/issues/new?title=Issue%20on%20page%20%2F_modules/mappymatch/maps/nx/readers/osm_readers.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,16 +784,24 @@ window.addEventListener("load", () => mermaid.run());
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -390,6 +840,7 @@ window.addEventListener("load", () => mermaid.run());
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.constructs.geofence</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geofence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.utils.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">XY_CRS</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.utils.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">MapException</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.utils.keys</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_METADATA_KEY</span>
 
 <span class="n">log</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">log</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 
@@ -402,7 +853,26 @@ window.addEventListener("load", () => mermaid.run());
 <a class="viewcode-back" href="../../../../../_autosummary/mappymatch.maps.nx.readers.osm_readers.html#mappymatch.maps.nx.readers.osm_readers.NetworkType">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">NetworkType</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Enumerator for Network Types supported by osmnx.</span>
+<span class="sd">    Enumeration of road network types supported by OSMnx for downloading from OpenStreetMap.</span>
+
+<span class="sd">    These network types determine which roads are included when downloading OSM data.</span>
+<span class="sd">    Each type corresponds to a predefined filter in OSMnx for different use cases and</span>
+<span class="sd">    transportation modes.</span>
+
+<span class="sd">    Values:</span>
+<span class="sd">        ALL_PRIVATE: All road types including private roads</span>
+<span class="sd">        ALL: All public road types</span>
+<span class="sd">        BIKE: Roads suitable for cycling</span>
+<span class="sd">        DRIVE: Roads suitable for driving (excludes footpaths, bike paths, etc.)</span>
+<span class="sd">        DRIVE_SERVICE: Driving roads including service roads (parking aisles, driveways, etc.)</span>
+<span class="sd">        WALK: Roads suitable for walking (includes footpaths, pedestrian areas, etc.)</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from mappymatch.maps.nx.readers.osm_readers import NetworkType</span>
+<span class="sd">        &gt;&gt;&gt; # Download a driving network</span>
+<span class="sd">        &gt;&gt;&gt; road_map = NxMap.from_geofence(geofence, network_type=NetworkType.DRIVE)</span>
+<span class="sd">        &gt;&gt;&gt; # Download a walking network</span>
+<span class="sd">        &gt;&gt;&gt; walk_map = NxMap.from_geofence(geofence, network_type=NetworkType.WALK)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">ALL_PRIVATE</span> <span class="o">=</span> <span class="s2">&quot;all_private&quot;</span>
@@ -421,18 +891,51 @@ window.addEventListener("load", () => mermaid.run());
     <span class="n">network_type</span><span class="p">:</span> <span class="n">NetworkType</span><span class="p">,</span>
     <span class="n">xy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">custom_filter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">additional_metadata_keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">filter_to_largest_component</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Build a networkx graph from OSM data</span>
+<span class="sd">    Download and process a road network from OpenStreetMap using OSMnx.</span>
+
+<span class="sd">    This function:</span>
+<span class="sd">    1. Downloads OSM data within the geofence using OSMnx</span>
+<span class="sd">    2. Optionally projects to Web Mercator for accurate distances</span>
+<span class="sd">    3. Adds speed and travel time estimates</span>
+<span class="sd">    4. Converts distances to kilometers</span>
+<span class="sd">    5. Optionally filters to the largest connected component</span>
+<span class="sd">    6. Compresses the graph to remove unnecessary data</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        geofence: the geofence to clip the graph to</span>
-<span class="sd">        network_type: the network type to use for the graph</span>
-<span class="sd">        xy: whether to use xy coordinates or lat/lon</span>
-<span class="sd">        custom_filter: a custom filter to pass to osmnx</span>
+<span class="sd">        geofence: The geographic boundary for downloading. Must be in EPSG:4326 (lat/lon).</span>
+<span class="sd">        network_type: The type of network to download (DRIVE, WALK, BIKE, etc.)</span>
+<span class="sd">        xy: If True, project to Web Mercator (EPSG:3857) for accurate metric distances. If False, keep in lat/lon. Default is True.</span>
+<span class="sd">        custom_filter: A custom OSMnx filter string for advanced queries (e.g., &#39;[&quot;highway&quot;~&quot;motorway|trunk|primary&quot;]&#39;). If specified, overrides network_type.</span>
+<span class="sd">        additional_metadata_keys: Set of OSM tag keys to preserve in road metadata (e.g., {&#39;maxspeed&#39;, &#39;lanes&#39;, &#39;surface&#39;}).</span>
+<span class="sd">        filter_to_largest_component: If True (default), keep only the largest strongly connected component to ensure all parts of the network are routable to each other. If False, keep disconnected components (may cause routing failures).</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        a networkx graph of the OSM network</span>
+<span class="sd">        A processed NetworkX MultiDiGraph ready for use with NxMap</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        MapException: If OSMnx is not installed</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from mappymatch.maps.nx.readers.osm_readers import nx_graph_from_osmnx, NetworkType</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Download a driving network</span>
+<span class="sd">        &gt;&gt;&gt; graph = nx_graph_from_osmnx(</span>
+<span class="sd">        ...     geofence=my_geofence,</span>
+<span class="sd">        ...     network_type=NetworkType.DRIVE,</span>
+<span class="sd">        ...     xy=True</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Download with custom filter and metadata</span>
+<span class="sd">        &gt;&gt;&gt; graph = nx_graph_from_osmnx(</span>
+<span class="sd">        ...     geofence=my_geofence,</span>
+<span class="sd">        ...     network_type=NetworkType.DRIVE,</span>
+<span class="sd">        ...     custom_filter=&#39;[&quot;highway&quot;~&quot;motorway|primary|secondary&quot;]&#39;,</span>
+<span class="sd">        ...     additional_metadata_keys={&#39;maxspeed&#39;, &#39;lanes&#39;, &#39;name&#39;}</span>
+<span class="sd">        ... )</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">osmnx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ox</span>
@@ -445,7 +948,13 @@ window.addEventListener("load", () => mermaid.run());
         <span class="n">network_type</span><span class="o">=</span><span class="n">network_type</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
         <span class="n">custom_filter</span><span class="o">=</span><span class="n">custom_filter</span><span class="p">,</span>
     <span class="p">)</span>
-    <span class="k">return</span> <span class="n">parse_osmnx_graph</span><span class="p">(</span><span class="n">raw_graph</span><span class="p">,</span> <span class="n">network_type</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="n">xy</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">parse_osmnx_graph</span><span class="p">(</span>
+        <span class="n">raw_graph</span><span class="p">,</span>
+        <span class="n">network_type</span><span class="p">,</span>
+        <span class="n">xy</span><span class="o">=</span><span class="n">xy</span><span class="p">,</span>
+        <span class="n">additional_metadata_keys</span><span class="o">=</span><span class="n">additional_metadata_keys</span><span class="p">,</span>
+        <span class="n">filter_to_largest_component</span><span class="o">=</span><span class="n">filter_to_largest_component</span><span class="p">,</span>
+    <span class="p">)</span></div>
 
 
 
@@ -455,17 +964,32 @@ window.addEventListener("load", () => mermaid.run());
     <span class="n">graph</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">,</span>
     <span class="n">network_type</span><span class="p">:</span> <span class="n">NetworkType</span><span class="p">,</span>
     <span class="n">xy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">additional_metadata_keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">filter_to_largest_component</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Parse the raw osmnx graph into a graph that we can use with our NxMap</span>
+<span class="sd">    Process and clean a raw OSMnx graph for use with mappymatch.</span>
+
+<span class="sd">    This function takes a graph downloaded from OSMnx and processes it by:</span>
+<span class="sd">    - Projecting to a metric coordinate system (optional)</span>
+<span class="sd">    - Computing edge speeds and travel times</span>
+<span class="sd">    - Adding distance in kilometers</span>
+<span class="sd">    - Filtering to the largest connected component (optional)</span>
+<span class="sd">    - Creating geometries for edges that lack them</span>
+<span class="sd">    - Compressing by removing unnecessary data</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        geofence: the geofence to clip the graph to</span>
-<span class="sd">        xy: whether to use xy coordinates or lat/lon</span>
-<span class="sd">        network_type: the network type to use for the graph</span>
+<span class="sd">        graph: A raw NetworkX MultiDiGraph from OSMnx</span>
+<span class="sd">        network_type: The type of network (used for metadata)</span>
+<span class="sd">        xy: If True, project to Web Mercator (EPSG:3857). If False, keep in lat/lon.</span>
+<span class="sd">        additional_metadata_keys: Set of OSM tag keys to preserve in road metadata</span>
+<span class="sd">        filter_to_largest_component: If True, keep only the largest strongly connected component. If False, keep all components.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        a cleaned networkx graph of the OSM network</span>
+<span class="sd">        A cleaned and processed NetworkX MultiDiGraph ready for NxMap</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        MapException: If OSMnx is not installed or if the network has no connected components</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span><span class="w"> </span><span class="nn">osmnx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ox</span>
@@ -485,35 +1009,26 @@ window.addEventListener("load", () => mermaid.run());
     <span class="n">nx</span><span class="o">.</span><span class="n">set_edge_attributes</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">kilometers</span><span class="p">,</span> <span class="s2">&quot;kilometers&quot;</span><span class="p">)</span>
 
     <span class="c1"># this makes sure there are no graph &#39;dead-ends&#39;</span>
-    <span class="n">sg_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">filter_to_largest_component</span><span class="p">:</span>
+        <span class="n">sg_components</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">strongly_connected_components</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">sg_components</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">MapException</span><span class="p">(</span>
-            <span class="s2">&quot;road network has no strongly connected components and is not routable; &quot;</span>
-            <span class="s2">&quot;check polygon boundaries.&quot;</span>
-        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">sg_components</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MapException</span><span class="p">(</span>
+                <span class="s2">&quot;road network has no strongly connected components and is not routable; &quot;</span>
+                <span class="s2">&quot;check polygon boundaries.&quot;</span>
+            <span class="p">)</span>
 
-    <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">sg_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)))</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">sg_components</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)))</span>
 
-    <span class="n">no_geom</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="k">if</span> <span class="s2">&quot;geometry&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">no_geom</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
             <span class="c1"># we&#39;ll build a pseudo-geometry using the x, y data from the nodes</span>
             <span class="n">unode</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">u</span><span class="p">]</span>
             <span class="n">vnode</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">v</span><span class="p">]</span>
             <span class="n">line</span> <span class="o">=</span> <span class="n">LineString</span><span class="p">([(</span><span class="n">unode</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">unode</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]),</span> <span class="p">(</span><span class="n">vnode</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">vnode</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])])</span>
             <span class="n">d</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">line</span>
-            <span class="n">no_geom</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">no_geom</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">total_links</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Warning: found </span><span class="si">{</span><span class="n">no_geom</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="n">total_links</span><span class="si">}</span><span class="s2"> links with no geometry; &quot;</span>
-            <span class="s2">&quot;creating link geometries from the node endpoints&quot;</span>
-        <span class="p">)</span>
 
-    <span class="n">g</span> <span class="o">=</span> <span class="n">compress</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">compress</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">additional_metadata_keys</span><span class="o">=</span><span class="n">additional_metadata_keys</span><span class="p">)</span>
 
     <span class="c1"># TODO: these should all be sourced from the same location</span>
     <span class="n">g</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s2">&quot;distance_weight&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;kilometers&quot;</span>
@@ -527,49 +1042,82 @@ window.addEventListener("load", () => mermaid.run());
 
 <div class="viewcode-block" id="compress">
 <a class="viewcode-back" href="../../../../../_autosummary/mappymatch.maps.nx.readers.osm_readers.html#mappymatch.maps.nx.readers.osm_readers.compress">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">compress</span><span class="p">(</span><span class="n">g</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compress</span><span class="p">(</span>
+    <span class="n">g</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">,</span> <span class="n">additional_metadata_keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    a hacky way to delete unnecessary data on the networkx graph</span>
+<span class="sd">    Remove unnecessary data from a NetworkX graph while preserving essential attributes.</span>
+
+<span class="sd">    This function reduces memory usage and file size by:</span>
+<span class="sd">    - Moving specified OSM tags to a metadata dictionary</span>
+<span class="sd">    - Removing edge attributes that aren&#39;t needed for routing or matching</span>
+<span class="sd">    - Removing all node attributes (only the node IDs are needed)</span>
+
+<span class="sd">    Essential attributes for edges are preserved:</span>
+<span class="sd">    - geometry: The LineString geometry of the road</span>
+<span class="sd">    - kilometers: Distance in kilometers for routing</span>
+<span class="sd">    - travel_time: Estimated travel time for routing</span>
+<span class="sd">    - metadata: Dictionary of additional OSM tags</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        g: the networkx graph to compress</span>
+<span class="sd">        g: The NetworkX MultiDiGraph to compress</span>
+<span class="sd">        additional_metadata_keys: Set of OSM tag keys to preserve in the metadata dictionary. Default preserved keys are &#39;osmid&#39; and &#39;name&#39;. Any additional keys specified here will also be moved to metadata.</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        the compressed networkx graph</span>
+<span class="sd">        The compressed NetworkX MultiDiGraph (modified in-place and returned)</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; # Compress with default metadata</span>
+<span class="sd">        &gt;&gt;&gt; compressed = compress(graph)</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Preserve additional OSM tags</span>
+<span class="sd">        &gt;&gt;&gt; compressed = compress(</span>
+<span class="sd">        ...     graph,</span>
+<span class="sd">        ...     additional_metadata_keys={&#39;maxspeed&#39;, &#39;lanes&#39;, &#39;surface&#39;, &#39;highway&#39;}</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Access metadata</span>
+<span class="sd">        &gt;&gt;&gt; edge_data = graph.edges[(&#39;123&#39;, &#39;456&#39;, 0)]</span>
+<span class="sd">        &gt;&gt;&gt; print(edge_data[&#39;metadata&#39;][&#39;name&#39;])  # Street name</span>
+<span class="sd">        &gt;&gt;&gt; print(edge_data[&#39;metadata&#39;][&#39;maxspeed&#39;])  # Speed limit if available</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">keys_to_delete</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s2">&quot;oneway&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ref&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;access&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;lanes&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;maxspeed&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;highway&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;length&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;speed_kph&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;osmid&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;street_count&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;junction&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;bridge&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;tunnel&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;reversed&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;y&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;x&quot;</span><span class="p">,</span>
-    <span class="p">]</span>
+    <span class="c1"># Define attributes to keep for edges</span>
+    <span class="n">edge_keep_keys</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;geometry&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kilometers&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;travel_time&quot;</span><span class="p">,</span>
+        <span class="n">DEFAULT_METADATA_KEY</span><span class="p">,</span>
+    <span class="p">}</span>
 
+    <span class="c1"># Define attributes to move to metadata</span>
+    <span class="n">default_metadata_keys</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;osmid&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">additional_metadata_keys</span><span class="p">:</span>
+        <span class="n">default_metadata_keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">additional_metadata_keys</span><span class="p">)</span>
+
+    <span class="c1"># Define attributes to keep for nodes (only what we need)</span>
+    <span class="n">node_keep_keys</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="c1"># Process edges</span>
     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys_to_delete</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">continue</span>
+        <span class="c1"># Initialize metadata dict if needed</span>
+        <span class="k">if</span> <span class="n">DEFAULT_METADATA_KEY</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">DEFAULT_METADATA_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
+        <span class="c1"># Move specified keys to metadata</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">default_metadata_keys</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">d</span><span class="p">:</span>
+                <span class="n">d</span><span class="p">[</span><span class="n">DEFAULT_METADATA_KEY</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+        <span class="c1"># Delete all keys not in keep list</span>
+        <span class="n">keys_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edge_keep_keys</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys_to_remove</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="c1"># Process nodes</span>
     <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys_to_delete</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="k">continue</span>
+        <span class="n">keys_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node_keep_keys</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">keys_to_remove</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
     <span class="k">return</span> <span class="n">g</span></div>
 
@@ -601,7 +1149,7 @@ window.addEventListener("load", () => mermaid.run());
   <div class="footer-item">
     
 <p class="component-author">
-By National Renewable Energy Laboratory
+By National Laboratory of the Rockies
 </p>
 
   </div>
@@ -635,8 +1183,8 @@ By National Renewable Energy Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -4,14 +4,15 @@ mappymatch.utils.plot
 .. automodule:: mappymatch.utils.plot
 
    
-   .. rubric:: Functions
+.. rubric:: Modules
 
-   .. autosummary::
-   
-      plot_geofence
-      plot_map
-      plot_match_distances
-      plot_matches
-      plot_path
-      plot_trace
-   
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   geofence
+   map
+   matches
+   path
+   trace
+   trajectory_segment

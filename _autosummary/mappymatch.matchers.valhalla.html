@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=30a733bc"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -53,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="mappymatch.matchers.osrm" href="mappymatch.matchers.osrm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="python"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,11 +154,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -172,7 +183,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lcss-example.html">LCSS Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/lcss_example.html">LCSS Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -217,7 +228,16 @@
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.crs.html">mappymatch.utils.crs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.exceptions.html">mappymatch.utils.exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.geo.html">mappymatch.utils.geo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.keys.html">mappymatch.utils.keys</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.geofence.html">mappymatch.utils.plot.geofence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.map.html">mappymatch.utils.plot.map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.matches.html">mappymatch.utils.plot.matches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.path.html">mappymatch.utils.plot.path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trace.html">mappymatch.utils.plot.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trajectory_segment.html">mappymatch.utils.plot.trajectory_segment</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.process_trace.html">mappymatch.utils.process_trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.url.html">mappymatch.utils.url</a></li>
 </ul>
@@ -232,14 +252,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -283,7 +298,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch" target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.matchers.valhalla.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.matchers.valhalla.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,16 +398,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -420,7 +443,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.build_match_result"><code class="docutils literal notranslate"><span class="pre">build_match_result()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.ValhallaMatcher"><code class="docutils literal notranslate"><span class="pre">ValhallaMatcher</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.ValhallaMatcher.match_trace"><code class="docutils literal notranslate"><span class="pre">ValhallaMatcher.match_trace()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.ValhallaMatcher.match_trace_batch"><code class="docutils literal notranslate"><span class="pre">ValhallaMatcher.match_trace_batch()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -440,10 +462,10 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#mappymatch.matchers.valhalla.build_match_result" title="mappymatch.matchers.valhalla.build_match_result"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_match_result</span></code></a>(trace, matched_points, path)</p></td>
-<td><p>builds a mappymatch MatchResult from the result of a Valhalla map matching request</p></td>
+<td><p>Build a MatchResult from Valhalla map matching response data.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#mappymatch.matchers.valhalla.build_path_from_result" title="mappymatch.matchers.valhalla.build_path_from_result"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build_path_from_result</span></code></a>(edges, shape)</p></td>
-<td><p>builds a mappymatch path from the result of a Valhalla map matching request</p></td>
+<td><p>Build a list of Road objects from Valhalla map matching response.</p></td>
 </tr>
 </tbody>
 </table>
@@ -452,42 +474,42 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#mappymatch.matchers.valhalla.ValhallaMatcher" title="mappymatch.matchers.valhalla.ValhallaMatcher"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValhallaMatcher</span></code></a>([valhalla_url, cost_model, ...])</p></td>
-<td><p>pings a Valhalla server for map matching</p></td>
+<td><p>Map matcher that uses a Valhalla server for matching GPS traces to road networks.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="mappymatch.matchers.valhalla.build_path_from_result">
-<span class="sig-prename descclassname"><span class="pre">mappymatch.matchers.valhalla.</span></span><span class="sig-name descname"><span class="pre">build_path_from_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#build_path_from_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.build_path_from_result" title="Link to this definition">#</a></dt>
-<dd><p>builds a mappymatch path from the result of a Valhalla map matching request</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><code class="xref py py-class docutils literal notranslate"><span class="pre">Road</span></code></a>]</span></p>
+<span class="sig-prename descclassname"><span class="pre">mappymatch.matchers.valhalla.</span></span><span class="sig-name descname"><span class="pre">build_path_from_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><span class="pre">Road</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#build_path_from_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.build_path_from_result" title="Link to this definition">#</a></dt>
+<dd><p>Build a list of Road objects from Valhalla map matching response.</p>
+<p>This parses the 'edges' array from a Valhalla trace_attributes response and converts
+each edge into a Road object with geometry and metadata.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>edges: List of edge dictionaries from the Valhalla response, containing</dt><dd><p>way_id, begin_shape_index, end_shape_index, speed, length, etc.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>edges</strong> (<em>List</em><em>[</em><em>dict</em><em>]</em>)</p></li>
-<li><p><strong>shape</strong> (<em>List</em><em>[</em><em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>]</em><em>]</em>)</p></li>
-</ul>
+<dt>shape: List of (lon, lat) coordinate tuples representing the matched path,</dt><dd><p>decoded from Valhalla's polyline</p>
+</dd>
+</dl>
+</dd>
+<dt>Returns:</dt><dd><p>A list of Road objects representing the matched path through the network</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mappymatch.matchers.valhalla.build_match_result">
-<span class="sig-prename descclassname"><span class="pre">mappymatch.matchers.valhalla.</span></span><span class="sig-name descname"><span class="pre">build_match_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matched_points</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#build_match_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.build_match_result" title="Link to this definition">#</a></dt>
-<dd><p>builds a mappymatch MatchResult from the result of a Valhalla map matching request</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="mappymatch.matchers.match_result.html#mappymatch.matchers.match_result.MatchResult" title="mappymatch.matchers.match_result.MatchResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchResult</span></code></a></span></p>
+<span class="sig-prename descclassname"><span class="pre">mappymatch.matchers.valhalla.</span></span><span class="sig-name descname"><span class="pre">build_match_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">matched_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><span class="pre">Road</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="mappymatch.matchers.match_result.html#mappymatch.matchers.match_result.MatchResult" title="mappymatch.matchers.match_result.MatchResult"><span class="pre">MatchResult</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#build_match_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.build_match_result" title="Link to this definition">#</a></dt>
+<dd><p>Build a MatchResult from Valhalla map matching response data.</p>
+<p>This combines the Valhalla matched_points array with the parsed path to create
+Match objects linking each GPS coordinate to its matched road segment.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>trace: The original GPS trace that was submitted for matching
+matched_points: List of matched point dictionaries from Valhalla response, containing edge_index and distance_from_trace_point for each GPS point
+path: List of Road objects representing the matched route (from build_path_from_result)</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>trace</strong> (<a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><em>Trace</em></a>)</p></li>
-<li><p><strong>matched_points</strong> (<em>List</em><em>[</em><em>dict</em><em>]</em>)</p></li>
-<li><p><strong>path</strong> (<em>List</em><em>[</em><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><em>Road</em></a><em>]</em>)</p></li>
-</ul>
+<dt>Returns:</dt><dd><p>A MatchResult containing matches for each coordinate and the full path</p>
 </dd>
 </dl>
 </dd></dl>
@@ -495,43 +517,82 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="mappymatch.matchers.valhalla.ValhallaMatcher">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mappymatch.matchers.valhalla.</span></span><span class="sig-name descname"><span class="pre">ValhallaMatcher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">valhalla_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://valhalla1.openstreetmap.de/trace_attributes'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cost_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_match</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'map_snap'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'edge.length',</span> <span class="pre">'edge.speed'}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#ValhallaMatcher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.ValhallaMatcher" title="Link to this definition">#</a></dt>
-<dd><p>pings a Valhalla server for map matching</p>
+<dd><p>Map matcher that uses a Valhalla server for matching GPS traces to road networks.</p>
+<p>Valhalla is an open-source routing engine that provides map matching capabilities.
+This matcher sends GPS coordinates to a Valhalla server and receives back matched
+road segments and routing results.</p>
+<p>The matcher communicates with Valhalla's trace_attributes API endpoint, which returns
+detailed information about matched edges including geometry, speed, and length.</p>
+<dl>
+<dt>Args:</dt><dd><dl class="simple">
+<dt>valhalla_url: The base URL of the Valhalla trace_attributes endpoint.</dt><dd><p>Default is a public demo server (not for production use).</p>
+</dd>
+<dt>cost_model: The routing cost model to use ('auto', 'bicycle', 'pedestrian', etc.).</dt><dd><p>Default is 'auto'.</p>
+</dd>
+<dt>shape_match: The shape matching algorithm ('map_snap', 'edge_walk', 'walk_or_snap').</dt><dd><p>Default is 'map_snap'.</p>
+</dd>
+<dt>attributes: Additional edge attributes to request from Valhalla beyond the required ones.</dt><dd><p>Default includes 'edge.length' and 'edge.speed'.</p>
+</dd>
+</dl>
+</dd>
+<dt>Attributes:</dt><dd><p>url_base: The Valhalla API endpoint URL
+cost_model: The routing cost model being used
+shape_match: The shape matching algorithm being used
+attributes: List of all requested edge attributes (required + additional)</p>
+</dd>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.matchers.valhalla</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValhallaMatcher</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use default demo server (for testing only)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matcher</span> <span class="o">=</span> <span class="n">ValhallaMatcher</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="n">match_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use your own Valhalla instance</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matcher</span> <span class="o">=</span> <span class="n">ValhallaMatcher</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">valhalla_url</span><span class="o">=</span><span class="s1">&#39;http://localhost:8002/trace_attributes&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cost_model</span><span class="o">=</span><span class="s1">&#39;bicycle&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Request additional attributes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matcher</span> <span class="o">=</span> <span class="n">ValhallaMatcher</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">attributes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;edge.length&#39;</span><span class="p">,</span> <span class="s1">&#39;edge.speed&#39;</span><span class="p">,</span> <span class="s1">&#39;edge.names&#39;</span><span class="p">,</span> <span class="s1">&#39;edge.surface&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Note:</dt><dd><p>The default demo server is rate-limited and should only be used for testing.
+For production use, deploy your own Valhalla instance.</p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.matchers.valhalla.ValhallaMatcher.match_trace">
-<span class="sig-name descname"><span class="pre">match_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#ValhallaMatcher.match_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.ValhallaMatcher.match_trace" title="Link to this definition">#</a></dt>
-<dd><p>Take in a trace of gps points and return a list of matching link ids</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="mappymatch.matchers.match_result.html#mappymatch.matchers.match_result.MatchResult" title="mappymatch.matchers.match_result.MatchResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchResult</span></code></a></span></p>
+<span class="sig-name descname"><span class="pre">match_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="mappymatch.matchers.match_result.html#mappymatch.matchers.match_result.MatchResult" title="mappymatch.matchers.match_result.MatchResult"><span class="pre">MatchResult</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#ValhallaMatcher.match_trace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.ValhallaMatcher.match_trace" title="Link to this definition">#</a></dt>
+<dd><p>Match a GPS trace to roads using the Valhalla map matching service.</p>
+<p>This method sends the trace to a Valhalla server, which performs map matching
+and returns the matched path and statistics. The trace is automatically converted
+to EPSG:4326 (lat/lon) if needed, as required by Valhalla.</p>
+<dl>
+<dt>Args:</dt><dd><p>trace: The GPS trace to match. Will be converted to EPSG:4326 if in a different CRS.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>trace</strong> (<a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><em>Trace</em></a>)</p>
+<dt>Returns:</dt><dd><p>A MatchResult containing:
+- matches: List of Match objects linking each GPS point to a road
+- path: List of Road objects representing the matched route</p>
 </dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>trace: The trace to match</p>
+<dt>Raises:</dt><dd><p>requests.HTTPError: If the Valhalla server returns an error response</p>
 </dd>
-<dt>Returns:</dt><dd><p>A list of Match objects</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mappymatch.matchers.valhalla.ValhallaMatcher.match_trace_batch">
-<span class="sig-name descname"><span class="pre">match_trace_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace_batch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/valhalla.html#ValhallaMatcher.match_trace_batch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.valhalla.ValhallaMatcher.match_trace_batch" title="Link to this definition">#</a></dt>
-<dd><p>Take in a batch of traces and return a batch of matching link ids</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="mappymatch.matchers.match_result.html#mappymatch.matchers.match_result.MatchResult" title="mappymatch.matchers.match_result.MatchResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">MatchResult</span></code></a>]</span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>trace_batch</strong> (<em>list</em><em>[</em><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><em>Trace</em></a><em>]</em>)</p>
-</dd>
-</dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>trace_batch: The batch of traces to match</p>
-</dd>
-<dt>Returns:</dt><dd><p>A batch of Match objects</p>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matcher</span> <span class="o">=</span> <span class="n">ValhallaMatcher</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trace</span> <span class="o">=</span> <span class="n">Trace</span><span class="o">.</span><span class="n">from_csv</span><span class="p">(</span><span class="s1">&#39;gps_data.csv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="n">match_trace</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Access results</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matched </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">matches</span><span class="p">)</span><span class="si">}</span><span class="s2"> points&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="si">}</span><span class="s2"> road segments&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Check road metadata from Valhalla</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">road</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">path</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Speed: </span><span class="si">{</span><span class="n">road</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;speed_mph&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> mph&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">road</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;length_miles&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> miles&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd></dl>
@@ -595,8 +656,7 @@
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -609,7 +669,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.build_match_result"><code class="docutils literal notranslate"><span class="pre">build_match_result()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.ValhallaMatcher"><code class="docutils literal notranslate"><span class="pre">ValhallaMatcher</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.ValhallaMatcher.match_trace"><code class="docutils literal notranslate"><span class="pre">ValhallaMatcher.match_trace()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mappymatch.matchers.valhalla.ValhallaMatcher.match_trace_batch"><code class="docutils literal notranslate"><span class="pre">ValhallaMatcher.match_trace_batch()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -626,7 +685,7 @@
   <div class="footer-item">
     
 <p class="component-author">
-By National Renewable Energy Laboratory
+By National Laboratory of the Rockies
 </p>
 
   </div>
@@ -660,8 +719,8 @@ By National Renewable Energy Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -11,6 +11,7 @@ mappymatch.matchers.lcss.ops
       add_matches_for_stationary_points
       drop_stationary_points
       find_stationary_points
+      join_segment
       new_path
       same_trajectory_scheme
       split_trajectory_segment

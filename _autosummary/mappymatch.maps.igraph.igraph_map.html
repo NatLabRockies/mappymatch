@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=30a733bc"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -53,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="mappymatch.maps.igraph" href="mappymatch.maps.igraph.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="python"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,11 +154,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -172,7 +183,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lcss-example.html">LCSS Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/lcss_example.html">LCSS Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -217,7 +228,16 @@
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.crs.html">mappymatch.utils.crs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.exceptions.html">mappymatch.utils.exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.geo.html">mappymatch.utils.geo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.keys.html">mappymatch.utils.keys</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.geofence.html">mappymatch.utils.plot.geofence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.map.html">mappymatch.utils.plot.map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.matches.html">mappymatch.utils.plot.matches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.path.html">mappymatch.utils.plot.path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trace.html">mappymatch.utils.plot.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trajectory_segment.html">mappymatch.utils.plot.trajectory_segment</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.process_trace.html">mappymatch.utils.process_trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.url.html">mappymatch.utils.url</a></li>
 </ul>
@@ -232,14 +252,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -283,7 +298,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch" target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.maps.igraph.igraph_map.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.maps.igraph.igraph_map.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,16 +398,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -447,32 +470,42 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="mappymatch.maps.igraph.igraph_map.IGraphMap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">IGraphMap</span></code></a>(graph)</p></td>
-<td><p>A road map that uses an igraph graph to represent its roads.</p></td>
+<td><p>A road network map implementation using igraph for high-performance graph operations.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <dl class="py class">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mappymatch.maps.igraph.igraph_map.</span></span><span class="sig-name descname"><span class="pre">IGraphMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="Link to this definition">#</a></dt>
-<dd><p>A road map that uses an igraph graph to represent its roads.</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mappymatch.maps.igraph.igraph_map.</span></span><span class="sig-name descname"><span class="pre">IGraphMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="Link to this definition">#</a></dt>
+<dd><p>A road network map implementation using igraph for high-performance graph operations.</p>
+<p>IGraphMap wraps an igraph.Graph to represent a road network, providing potentially
+faster performance than NetworkX for very large networks. It uses an R-tree spatial
+index for efficient nearest-neighbor searches and supports both distance and time-based routing.</p>
+<p>The underlying igraph must have:
+- A pyproj CRS stored in graph['crs']
+- Road geometries (LineStrings) stored as edge attributes
+- Node IDs stored in vertex attributes
+- Edge IDs (keys) for multi-edges between the same nodes
+- Optional distance and time weights for routing</p>
+<p>This implementation is particularly useful when working with very large road networks
+where performance is critical.</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>ig: The igraph graph that represents the road map
-road_mapping: A mapping from road ids to igraph edge ids
+<dt>Attributes:</dt><dd><p>g: The igraph.Graph representing the road network
+road_mapping: A dictionary mapping RoadId tuples to igraph edge indices
 crs: The coordinate reference system of the map</p>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>graph</strong> (<em>ig.Graph</em>)</p>
+<dt>Note:</dt><dd><p>igraph must be installed to use this class. Install with: pip install igraph</p>
 </dd>
 </dl>
 <dl class="py property">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.distance_weight">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">distance_weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.distance_weight" title="Link to this definition">#</a></dt>
-<dd><p>Get the distance weight</p>
+<dd><p>Get the name of the edge attribute used for distance-based routing.</p>
+<p>This property identifies which edge attribute should be used when computing
+shortest paths based on physical distance (as opposed to time or other metrics).</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>The distance weight</p>
+<dt>Returns:</dt><dd><p>The name of the distance weight attribute (e.g., 'kilometers', 'miles', 'length')</p>
 </dd>
 </dl>
 </dd></dl>
@@ -480,25 +513,19 @@ crs: The coordinate reference system of the map</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.time_weight">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">time_weight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.time_weight" title="Link to this definition">#</a></dt>
-<dd><p>Get the time weight</p>
+<dd><p>Get the name of the edge attribute used for time-based routing.</p>
+<p>This property identifies which edge attribute should be used when computing
+fastest paths based on travel time (as opposed to distance or other metrics).</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>The time weight</p>
+<dt>Returns:</dt><dd><p>The name of the time weight attribute (e.g., 'minutes', 'seconds', 'travel_time')</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.road_by_id">
-<span class="sig-name descname"><span class="pre">road_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">road_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.road_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.road_by_id" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">road_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">road_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.RoadId" title="mappymatch.constructs.road.RoadId"><span class="pre">RoadId</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><span class="pre">Road</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.road_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.road_by_id" title="Link to this definition">#</a></dt>
 <dd><p>Get a road by its id</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><code class="xref py py-class docutils literal notranslate"><span class="pre">Road</span></code></a>]</span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>road_id</strong> (<a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.RoadId" title="mappymatch.constructs.road.RoadId"><em>RoadId</em></a>)</p>
-</dd>
-</dl>
 <dl class="simple">
 <dt>Args:</dt><dd><p>road_id: The id of the road to get</p>
 </dd>
@@ -509,17 +536,12 @@ crs: The coordinate reference system of the map</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.set_road_attributes">
-<span class="sig-name descname"><span class="pre">set_road_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attributes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.set_road_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.set_road_attributes" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_road_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.RoadId" title="mappymatch.constructs.road.RoadId"><span class="pre">RoadId</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.set_road_attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.set_road_attributes" title="Link to this definition">#</a></dt>
 <dd><p>Set the attributes of the roads in the map</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>attributes: A dictionary mapping road ids to dictionaries of attributes</p>
 </dd>
 <dt>Returns:</dt><dd><p>None</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>attributes</strong> (<em>Dict</em><em>[</em><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.RoadId" title="mappymatch.constructs.road.RoadId"><em>RoadId</em></a><em>, </em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>]</em>)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -536,30 +558,14 @@ crs: The coordinate reference system of the map</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.from_nx_graph">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_nx_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nx_graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.from_nx_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.from_nx_graph" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_nx_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nx_graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MultiDiGraph</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="mappymatch.maps.igraph.igraph_map.IGraphMap"><span class="pre">IGraphMap</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.from_nx_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.from_nx_graph" title="Link to this definition">#</a></dt>
 <dd><p>Build an IGraphMap from a networkx graph</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="mappymatch.maps.igraph.igraph_map.IGraphMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGraphMap</span></code></a></span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>nx_graph</strong> (<em>MultiDiGraph</em>)</p>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.from_file">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.from_file" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="mappymatch.maps.igraph.igraph_map.IGraphMap"><span class="pre">IGraphMap</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.from_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.from_file" title="Link to this definition">#</a></dt>
 <dd><p>Build a IGraphMap instance from a file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="mappymatch.maps.igraph.igraph_map.IGraphMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGraphMap</span></code></a></span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>file</strong> (<em>str</em><em> | </em><em>Path</em>)</p>
-</dd>
-</dl>
 <dl class="simple">
 <dt>Args:</dt><dd><p>file: The graph pickle file to load the graph from</p>
 </dd>
@@ -570,20 +576,8 @@ crs: The coordinate reference system of the map</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.from_geofence">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_geofence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geofence</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">NetworkType.DRIVE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.from_geofence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.from_geofence" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_geofence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geofence</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.geofence.html#mappymatch.constructs.geofence.Geofence" title="mappymatch.constructs.geofence.Geofence"><span class="pre">Geofence</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">xy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.maps.nx.readers.osm_readers.html#mappymatch.maps.nx.readers.osm_readers.NetworkType" title="mappymatch.maps.nx.readers.osm_readers.NetworkType"><span class="pre">NetworkType</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">NetworkType.DRIVE</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="mappymatch.maps.igraph.igraph_map.IGraphMap"><span class="pre">IGraphMap</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.from_geofence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.from_geofence" title="Link to this definition">#</a></dt>
 <dd><p>Read an OSM network graph into a IGraphMap</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.maps.igraph.igraph_map.IGraphMap" title="mappymatch.maps.igraph.igraph_map.IGraphMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">IGraphMap</span></code></a></span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>geofence</strong> (<a class="reference internal" href="mappymatch.constructs.geofence.html#mappymatch.constructs.geofence.Geofence" title="mappymatch.constructs.geofence.Geofence"><em>Geofence</em></a>)</p></li>
-<li><p><strong>xy</strong> (<em>bool</em>)</p></li>
-<li><p><strong>network_type</strong> (<a class="reference internal" href="mappymatch.maps.nx.readers.osm_readers.html#mappymatch.maps.nx.readers.osm_readers.NetworkType" title="mappymatch.maps.nx.readers.osm_readers.NetworkType"><em>NetworkType</em></a>)</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
 <dt>Args:</dt><dd><p>geofence: the geofence to clip the graph to
 xy: whether to use xy coordinates or lat/lon
@@ -596,37 +590,20 @@ network_type: the network type to use for the graph</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.to_file">
-<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.to_file" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.to_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.to_file" title="Link to this definition">#</a></dt>
 <dd><p>Save the graph to a pickle file</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>outfile: The file to save the graph to</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>outfile</strong> (<em>str</em><em> | </em><em>Path</em>)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.nearest_road">
-<span class="sig-name descname"><span class="pre">nearest_road</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.nearest_road"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.nearest_road" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">nearest_road</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.coordinate.html#mappymatch.constructs.coordinate.Coordinate" title="mappymatch.constructs.coordinate.Coordinate"><span class="pre">Coordinate</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><span class="pre">Road</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.nearest_road"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.nearest_road" title="Link to this definition">#</a></dt>
 <dd><p>A helper function to get the nearest road.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><code class="xref py py-class docutils literal notranslate"><span class="pre">Road</span></code></a></span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>coord</strong> (<a class="reference internal" href="mappymatch.constructs.coordinate.html#mappymatch.constructs.coordinate.Coordinate" title="mappymatch.constructs.coordinate.Coordinate"><em>Coordinate</em></a>)</p></li>
-<li><p><strong>buffer</strong> (<em>float</em>)</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
-<dt>Args:</dt><dd><p>coord: The coordinate to find the nearest road to
-buffer: The buffer to search around the coordinate</p>
+<dt>Args:</dt><dd><p>coord: The coordinate to find the nearest road to</p>
 </dd>
 <dt>Returns:</dt><dd><p>The nearest road to the coordinate</p>
 </dd>
@@ -635,20 +612,8 @@ buffer: The buffer to search around the coordinate</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.maps.igraph.igraph_map.IGraphMap.shortest_path">
-<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.shortest_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.shortest_path" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">shortest_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.coordinate.html#mappymatch.constructs.coordinate.Coordinate" title="mappymatch.constructs.coordinate.Coordinate"><span class="pre">Coordinate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.coordinate.html#mappymatch.constructs.coordinate.Coordinate" title="mappymatch.constructs.coordinate.Coordinate"><span class="pre">Coordinate</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><span class="pre">Road</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/mappymatch/maps/igraph/igraph_map.html#IGraphMap.shortest_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.maps.igraph.igraph_map.IGraphMap.shortest_path" title="Link to this definition">#</a></dt>
 <dd><p>Computes the shortest path between an origin and a destination</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><code class="xref py py-class docutils literal notranslate"><span class="pre">Road</span></code></a>]</span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>origin</strong> (<a class="reference internal" href="mappymatch.constructs.coordinate.html#mappymatch.constructs.coordinate.Coordinate" title="mappymatch.constructs.coordinate.Coordinate"><em>Coordinate</em></a>)</p></li>
-<li><p><strong>destination</strong> (<a class="reference internal" href="mappymatch.constructs.coordinate.html#mappymatch.constructs.coordinate.Coordinate" title="mappymatch.constructs.coordinate.Coordinate"><em>Coordinate</em></a>)</p></li>
-<li><p><strong>weight</strong> (<em>str</em><em> | </em><em>Callable</em><em> | </em><em>None</em>)</p></li>
-</ul>
-</dd>
-</dl>
 <dl class="simple">
 <dt>Args:</dt><dd><p>origin: The origin coordinate
 destination: The destination coordinate
@@ -718,8 +683,7 @@ weight: The weight to use for the path, either a string or a function</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -756,7 +720,7 @@ weight: The weight to use for the path, either a string or a function</p>
   <div class="footer-item">
     
 <p class="component-author">
-By National Renewable Energy Laboratory
+By National Laboratory of the Rockies
 </p>
 
   </div>
@@ -790,8 +754,8 @@ By National Renewable Energy Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

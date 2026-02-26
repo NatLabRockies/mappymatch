@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=30a733bc"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -53,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="mappymatch.matchers.lcss" href="mappymatch.matchers.lcss.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="python"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,11 +154,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -172,7 +183,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lcss-example.html">LCSS Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/lcss_example.html">LCSS Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -217,7 +228,16 @@
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.crs.html">mappymatch.utils.crs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.exceptions.html">mappymatch.utils.exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.geo.html">mappymatch.utils.geo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.keys.html">mappymatch.utils.keys</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="mappymatch.utils.plot.html">mappymatch.utils.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.geofence.html">mappymatch.utils.plot.geofence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.map.html">mappymatch.utils.plot.map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.matches.html">mappymatch.utils.plot.matches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.path.html">mappymatch.utils.plot.path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trace.html">mappymatch.utils.plot.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mappymatch.utils.plot.trajectory_segment.html">mappymatch.utils.plot.trajectory_segment</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.process_trace.html">mappymatch.utils.process_trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mappymatch.utils.url.html">mappymatch.utils.url</a></li>
 </ul>
@@ -232,14 +252,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -283,7 +298,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch" target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.matchers.lcss.constructs.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch/issues/new?title=Issue%20on%20page%20%2F_autosummary/mappymatch.matchers.lcss.constructs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,16 +398,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -450,10 +473,10 @@
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.CuttingPoint" title="mappymatch.matchers.lcss.constructs.CuttingPoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CuttingPoint</span></code></a>(trace_index)</p></td>
-<td><p>A cutting point represents where the LCSS algorithm cuts the trace into a sub-segment.</p></td>
+<td><p>Represents a location where the LCSS algorithm splits a trajectory into sub-segments.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TrajectorySegment</span></code></a>(trace, path[, matches, ...])</p></td>
-<td><p>Represents a pairing of a trace and candidate path</p></td>
+<td><p>Represents a pairing of a GPS trace segment with a candidate path through the road network.</p></td>
 </tr>
 </tbody>
 </table>
@@ -461,19 +484,20 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.CuttingPoint">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mappymatch.matchers.lcss.constructs.</span></span><span class="sig-name descname"><span class="pre">CuttingPoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace_index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">signedinteger</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#CuttingPoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.CuttingPoint" title="Link to this definition">#</a></dt>
-<dd><p>A cutting point represents where the LCSS algorithm cuts the trace into a sub-segment.</p>
+<dd><p>Represents a location where the LCSS algorithm splits a trajectory into sub-segments.</p>
+<p>Cutting points are identified during the iterative refinement process as locations where
+the GPS trajectory deviates significantly from the candidate path. Splitting at these
+points allows the algorithm to find better local matches.</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>trace_index: An index of where to cut the trace</p>
+<dt>Attributes:</dt><dd><dl class="simple">
+<dt>trace_index: The integer index in the trace where the cut should be made.</dt><dd><p>This indexes into the trace's coordinate list.</p>
 </dd>
 </dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>trace_index</strong> (<em>signedinteger</em><em> | </em><em>int</em>)</p>
 </dd>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.CuttingPoint.trace_index">
-<span class="sig-name descname"><span class="pre">trace_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">signedinteger</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]</span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.CuttingPoint.trace_index" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">trace_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">signedinteger</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.CuttingPoint.trace_index" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 0</p>
 </dd></dl>
 
@@ -482,68 +506,54 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mappymatch.matchers.lcss.constructs.</span></span><span class="sig-name descname"><span class="pre">TrajectorySegment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><span class="pre">Road</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">matches</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.match.html#mappymatch.constructs.match.Match" title="mappymatch.constructs.match.Match"><span class="pre">Match</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutting_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.CuttingPoint" title="mappymatch.matchers.lcss.constructs.CuttingPoint"><span class="pre">CuttingPoint</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="Link to this definition">#</a></dt>
-<dd><p>Represents a pairing of a trace and candidate path</p>
+<dd><p>Represents a pairing of a GPS trace segment with a candidate path through the road network.</p>
+<p>TrajectorySegments are the core data structure used by the LCSS matcher. Each segment
+contains a portion of the GPS trace, a candidate path through the road network, matching
+results, a similarity score, and potential cutting points for further refinement.</p>
+<p>During the iterative LCSS algorithm, segments are scored, split at cutting points, and
+merged to find the best overall match between the GPS trajectory and the road network.</p>
 <dl class="simple">
-<dt>Attributes:</dt><dd><p>trace: The trace in the segment
-path: The candidate path in the segment
-matches: The matches between the trace and the path
-score: The similarity score between the trace and the path
-cutting_points: The points where the trace and path are to be cut</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>trace</strong> (<a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><em>Trace</em></a>)</p></li>
-<li><p><strong>path</strong> (<em>List</em><em>[</em><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><em>Road</em></a><em>]</em>)</p></li>
-<li><p><strong>matches</strong> (<em>List</em><em>[</em><a class="reference internal" href="mappymatch.constructs.match.html#mappymatch.constructs.match.Match" title="mappymatch.constructs.match.Match"><em>Match</em></a><em>]</em>)</p></li>
-<li><p><strong>score</strong> (<em>float</em>)</p></li>
-<li><p><strong>cutting_points</strong> (<em>List</em><em>[</em><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.CuttingPoint" title="mappymatch.matchers.lcss.constructs.CuttingPoint"><em>CuttingPoint</em></a><em>]</em>)</p></li>
-</ul>
+<dt>Attributes:</dt><dd><p>trace: The GPS trace segment being matched
+path: The candidate path through the road network (list of Road objects)
+matches: List of Match objects linking each GPS point to a road. Empty until score_and_match is called.
+score: The LCSS similarity score between trace and path (0-1). 0 until scored.
+cutting_points: List of CuttingPoint objects indicating where to split this segment for further refinement. Empty until compute_cutting_points is called.</p>
 </dd>
 </dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.trace">
-<span class="sig-name descname"><span class="pre">trace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trace</span></code></a></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.trace" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">trace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="mappymatch.constructs.trace.html#mappymatch.constructs.trace.Trace" title="mappymatch.constructs.trace.Trace"><span class="pre">Trace</span></a></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.trace" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 0</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.path">
-<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><code class="xref py py-class docutils literal notranslate"><span class="pre">Road</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.path" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">path</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.road.html#mappymatch.constructs.road.Road" title="mappymatch.constructs.road.Road"><span class="pre">Road</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.path" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 1</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.matches">
-<span class="sig-name descname"><span class="pre">matches</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><a class="reference internal" href="mappymatch.constructs.match.html#mappymatch.constructs.match.Match" title="mappymatch.constructs.match.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.matches" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">matches</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="mappymatch.constructs.match.html#mappymatch.constructs.match.Match" title="mappymatch.constructs.match.Match"><span class="pre">Match</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.matches" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 2</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.score">
-<span class="sig-name descname"><span class="pre">score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.score" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">score</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.score" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 3</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.cutting_points">
-<span class="sig-name descname"><span class="pre">cutting_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.CuttingPoint" title="mappymatch.matchers.lcss.constructs.CuttingPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">CuttingPoint</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.cutting_points" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">cutting_points</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.CuttingPoint" title="mappymatch.matchers.lcss.constructs.CuttingPoint"><span class="pre">CuttingPoint</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.cutting_points" title="Link to this definition">#</a></dt>
 <dd><p>Alias for field number 4</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.set_score">
-<span class="sig-name descname"><span class="pre">set_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.set_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.set_score" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">score</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><span class="pre">TrajectorySegment</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.set_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.set_score" title="Link to this definition">#</a></dt>
 <dd><p>Sets the score of the trajectory segment</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrajectorySegment</span></code></a></span></p>
-</dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>score</strong> (<em>float</em>)</p>
-</dd>
-</dl>
 <dl class="simple">
 <dt>Args:</dt><dd><p>score: The score of the trajectory segment</p>
 </dd>
@@ -554,13 +564,8 @@ cutting_points: The points where the trace and path are to be cut</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.set_cutting_points">
-<span class="sig-name descname"><span class="pre">set_cutting_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutting_points</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.set_cutting_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.set_cutting_points" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_cutting_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutting_points</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><span class="pre">TrajectorySegment</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.set_cutting_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.set_cutting_points" title="Link to this definition">#</a></dt>
 <dd><p>Sets the cutting points of the trajectory segment</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrajectorySegment</span></code></a></span></p>
-</dd>
-</dl>
 <dl class="simple">
 <dt>Args:</dt><dd><p>cutting_points: The cutting points of the trajectory segment</p>
 </dd>
@@ -571,13 +576,8 @@ cutting_points: The points where the trace and path are to be cut</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.set_matches">
-<span class="sig-name descname"><span class="pre">set_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matches</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.set_matches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.set_matches" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">set_matches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matches</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><span class="pre">TrajectorySegment</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.set_matches"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.set_matches" title="Link to this definition">#</a></dt>
 <dd><p>Sets the matches of the trajectory segment</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrajectorySegment</span></code></a></span></p>
-</dd>
-</dl>
 <dl class="simple">
 <dt>Args:</dt><dd><p>matches: The matches of the trajectory segment</p>
 </dd>
@@ -588,54 +588,55 @@ cutting_points: The points where the trace and path are to be cut</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.score_and_match">
-<span class="sig-name descname"><span class="pre">score_and_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_distance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.score_and_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.score_and_match" title="Link to this definition">#</a></dt>
-<dd><p>Computes the score of a trace, pair matching and also matches the coordinates to the nearest road.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrajectorySegment</span></code></a></span></p>
+<span class="sig-name descname"><span class="pre">score_and_match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><span class="pre">TrajectorySegment</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.score_and_match"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.score_and_match" title="Link to this definition">#</a></dt>
+<dd><p>Compute the LCSS similarity score and match GPS points to road segments.</p>
+<p>This method implements the core LCSS (Longest Common Subsequence) algorithm for
+trajectory matching. It computes a similarity score between the GPS trace and
+the candidate path based on point-to-path distances, and simultaneously matches
+each GPS coordinate to its nearest road in the path.</p>
+<p>The LCSS similarity score ranges from 0 (no similarity) to 1 (perfect match),
+with higher scores indicating better alignment between the trajectory and path.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>distance_epsilon: The distance threshold (in meters) for similarity. GPS points</dt><dd><p>within this distance of the path contribute positively to the score. Points
+farther away contribute zero.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>distance_epsilon</strong> (<em>float</em>)</p></li>
-<li><p><strong>max_distance</strong> (<em>float</em>)</p></li>
-</ul>
+<dt>max_distance: The maximum distance (in meters) for matching. GPS points beyond</dt><dd><p>this distance from the nearest road are left unmatched (road=None, distance=inf).</p>
 </dd>
 </dl>
-<dl class="simple">
-<dt>Args:</dt><dd><p>distance_epsilon: The distance threshold for matching
-max_distance: The maximum distance between the trace and the path</p>
 </dd>
-<dt>Returns:</dt><dd><p>The updated trajectory segment with a score and matches</p>
+<dt>Returns:</dt><dd><p>A new TrajectorySegment with populated matches list and computed score</p>
+</dd>
+<dt>Raises:</dt><dd><p>Exception: If the trace has 0 points (edge case that cannot be matched)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="mappymatch.matchers.lcss.constructs.TrajectorySegment.compute_cutting_points">
-<span class="sig-name descname"><span class="pre">compute_cutting_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_epsilon</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutting_thresh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_cuts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.compute_cutting_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.compute_cutting_points" title="Link to this definition">#</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrajectorySegment</span></code></a></span></p>
+<span class="sig-name descname"><span class="pre">compute_cutting_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance_epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutting_thresh</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_cuts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment" title="mappymatch.matchers.lcss.constructs.TrajectorySegment"><span class="pre">TrajectorySegment</span></a></span></span><a class="reference internal" href="../_modules/mappymatch/matchers/lcss/constructs.html#TrajectorySegment.compute_cutting_points"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mappymatch.matchers.lcss.constructs.TrajectorySegment.compute_cutting_points" title="Link to this definition">#</a></dt>
+<dd><p>Identify locations where the trajectory should be split for refinement.</p>
+<p>Cutting points are locations where the GPS trace deviates from the candidate path,
+suggesting that splitting the trajectory at these points and computing separate
+paths for each segment may yield better matches.</p>
+<p>The method identifies cutting points by:
+1. Finding the point with maximum distance from the matched path (highest deviation)
+2. Finding points near the distance_epsilon threshold (borderline matches)
+3. Optionally adding random points for exploration
+4. Handling edge cases (no path, circular routes, etc.)</p>
+<p>Adjacent cutting points are compressed to avoid splitting too finely, and cutting
+points at the start/end of the trace are removed (can't split there).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>distance_epsilon: The distance threshold (in meters) used for matching.</dt><dd><p>Points near this threshold are candidates for cutting.</p>
 </dd>
-<dt class="field-even">Parameters<span class="colon">:</span></dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>distance_epsilon</strong> (<em>float</em>)</p></li>
-<li><p><strong>cutting_thresh</strong> (<em>float</em>)</p></li>
-<li><p><strong>random_cuts</strong> (<em>int</em>)</p></li>
-</ul>
+<dt>cutting_thresh: The distance tolerance (in meters) around distance_epsilon.</dt><dd><p>Points within cutting_thresh of distance_epsilon are marked as cutting points.</p>
+</dd>
+<dt>random_cuts: Number of random cutting points to add for exploration.</dt><dd><p>Typically 0 for deterministic results.</p>
 </dd>
 </dl>
-<dl class="simple">
-<dt>Computes the cutting points for a trajectory segment by:</dt><dd><ul class="simple">
-<li><p>computing the furthest point</p></li>
-<li><p>adding points that are close to the distance epsilon</p></li>
-</ul>
 </dd>
-<dt>Args:</dt><dd><p>distance_epsilon: The distance threshold for matching
-cutting_thresh: The threshold for cutting the trace
-random_cuts: The number of random cuts to add</p>
-</dd>
-<dt>Returns:</dt><dd><p>The updated trajectory segment with cutting points</p>
+<dt>Returns:</dt><dd><p>A new TrajectorySegment with populated cutting_points list</p>
 </dd>
 </dl>
 </dd></dl>
@@ -699,8 +700,7 @@ random_cuts: The number of random cuts to add</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -740,7 +740,7 @@ random_cuts: The number of random cuts to add</p>
   <div class="footer-item">
     
 <p class="component-author">
-By National Renewable Energy Laboratory
+By National Laboratory of the Rockies
 </p>
 
   </div>
@@ -774,8 +774,8 @@ By National Renewable Energy Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

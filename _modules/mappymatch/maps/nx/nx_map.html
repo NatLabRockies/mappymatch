@@ -15,33 +15,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../../_static/documentation_options.js?v=30a733bc"></script>
     <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
@@ -52,27 +49,453 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../../_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-    <script type="module">
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs";
-window.addEventListener("load", () => mermaid.run());
-</script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10.8/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);</script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mappymatch/maps/nx/nx_map';</script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="python"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -88,8 +511,19 @@ window.addEventListener("load", () => mermaid.run());
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../../search.html"
       method="get">
@@ -97,6 +531,7 @@ window.addEventListener("load", () => mermaid.run());
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -104,8 +539,8 @@ window.addEventListener("load", () => mermaid.run());
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -123,8 +558,7 @@ window.addEventListener("load", () => mermaid.run());
       
         
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,11 +588,15 @@ window.addEventListener("load", () => mermaid.run());
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -179,7 +617,7 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../../../lcss-example.html">LCSS Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples/lcss_example.html">LCSS Example</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -224,7 +662,16 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.crs.html">mappymatch.utils.crs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.exceptions.html">mappymatch.utils.exceptions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.geo.html">mappymatch.utils.geo</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.html">mappymatch.utils.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.keys.html">mappymatch.utils.keys</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.html">mappymatch.utils.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.geofence.html">mappymatch.utils.plot.geofence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.map.html">mappymatch.utils.plot.map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.matches.html">mappymatch.utils.plot.matches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.path.html">mappymatch.utils.plot.path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.trace.html">mappymatch.utils.plot.trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.plot.trajectory_segment.html">mappymatch.utils.plot.trajectory_segment</a></li>
+</ul>
+</details></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.process_trace.html">mappymatch.utils.process_trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../_autosummary/mappymatch.utils.url.html">mappymatch.utils.url</a></li>
 </ul>
@@ -239,14 +686,9 @@ window.addEventListener("load", () => mermaid.run());
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -290,7 +732,7 @@ window.addEventListener("load", () => mermaid.run());
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch" target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +749,7 @@ window.addEventListener("load", () => mermaid.run());
       
       
       
-      <li><a href="https://github.com/NREL/mappymatch/issues/new?title=Issue%20on%20page%20%2F_modules/mappymatch/maps/nx/nx_map.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/NLR/mappymatch/issues/new?title=Issue%20on%20page%20%2F_modules/mappymatch/maps/nx/nx_map.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -342,16 +784,24 @@ window.addEventListener("load", () => mermaid.run());
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -382,17 +832,18 @@ window.addEventListener("load", () => mermaid.run());
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">rtree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">shapely.wkt</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">wkt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.strtree</span><span class="w"> </span><span class="kn">import</span> <span class="n">STRtree</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.constructs.coordinate</span><span class="w"> </span><span class="kn">import</span> <span class="n">Coordinate</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.constructs.geofence</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geofence</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.constructs.road</span><span class="w"> </span><span class="kn">import</span> <span class="n">Road</span><span class="p">,</span> <span class="n">RoadId</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.maps.igraph.igraph_map</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_METADATA_KEY</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.maps.map_interface</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
     <span class="n">DEFAULT_DISTANCE_WEIGHT</span><span class="p">,</span>
     <span class="n">DEFAULT_TIME_WEIGHT</span><span class="p">,</span>
@@ -403,21 +854,52 @@ window.addEventListener("load", () => mermaid.run());
     <span class="n">nx_graph_from_osmnx</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.utils.crs</span><span class="w"> </span><span class="kn">import</span> <span class="n">CRS</span><span class="p">,</span> <span class="n">LATLON_CRS</span>
-
-<span class="n">DEFAULT_GEOMETRY_KEY</span> <span class="o">=</span> <span class="s2">&quot;geometry&quot;</span>
-<span class="n">DEFAULT_METADATA_KEY</span> <span class="o">=</span> <span class="s2">&quot;metadata&quot;</span>
-<span class="n">DEFAULT_CRS_KEY</span> <span class="o">=</span> <span class="s2">&quot;crs&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mappymatch.utils.keys</span><span class="w"> </span><span class="kn">import</span> <span class="n">DEFAULT_CRS_KEY</span><span class="p">,</span> <span class="n">DEFAULT_GEOMETRY_KEY</span>
 
 
 <div class="viewcode-block" id="NxMap">
 <a class="viewcode-back" href="../../../../_autosummary/mappymatch.maps.nx.nx_map.html#mappymatch.maps.nx.nx_map.NxMap">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">NxMap</span><span class="p">(</span><span class="n">MapInterface</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A road map that uses a networkx graph to represent its roads.</span>
+<span class="sd">    A road network map implementation using NetworkX graphs.</span>
+
+<span class="sd">    NxMap wraps a NetworkX MultiDiGraph to represent a road network, providing efficient</span>
+<span class="sd">    graph operations and spatial queries. It uses an R-tree spatial index for fast</span>
+<span class="sd">    nearest-neighbor searches and supports both distance and time-based routing.</span>
+
+<span class="sd">    The underlying graph must have:</span>
+<span class="sd">    - A pyproj CRS stored in graph.graph[&#39;crs&#39;]</span>
+<span class="sd">    - Road geometries (LineStrings) for each edge</span>
+<span class="sd">    - Optional distance and time weights for routing</span>
+
+<span class="sd">    NxMap is the primary map implementation in mappymatch and integrates well with</span>
+<span class="sd">    OSMnx for downloading OpenStreetMap data.</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        g: The networkx graph that represents the road map</span>
+<span class="sd">        g: The NetworkX MultiDiGraph representing the road network</span>
 <span class="sd">        crs: The coordinate reference system of the map</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; from mappymatch.maps.nx import NxMap</span>
+<span class="sd">        &gt;&gt;&gt; from mappymatch.constructs.geofence import Geofence</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Load from a saved file</span>
+<span class="sd">        &gt;&gt;&gt; road_map = NxMap.from_file(&#39;network.pickle&#39;)</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Create from OpenStreetMap data</span>
+<span class="sd">        &gt;&gt;&gt; geofence = Geofence.from_geojson(&#39;study_area.geojson&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; road_map = NxMap.from_geofence(</span>
+<span class="sd">        ...     geofence,</span>
+<span class="sd">        ...     network_type=NetworkType.DRIVE,</span>
+<span class="sd">        ...     xy=True  # Use Web Mercator for accurate distances</span>
+<span class="sd">        ... )</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Use the map for routing and queries</span>
+<span class="sd">        &gt;&gt;&gt; nearest = road_map.nearest_road(coordinate)</span>
+<span class="sd">        &gt;&gt;&gt; path = road_map.shortest_path(origin, destination)</span>
+<span class="sd">        &gt;&gt;&gt;</span>
+<span class="sd">        &gt;&gt;&gt; # Save for later use</span>
+<span class="sd">        &gt;&gt;&gt; road_map.to_file(&#39;network.pickle&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">:</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiDiGraph</span><span class="p">):</span>
@@ -492,26 +974,25 @@ window.addEventListener("load", () => mermaid.run());
         <span class="k">return</span> <span class="n">road</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_build_rtree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">idx</span> <span class="o">=</span> <span class="n">rt</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">Index</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">gtuple</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)):</span>
-            <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">gtuple</span>
+        <span class="n">geoms</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">road_ids</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
             <span class="n">road_id</span> <span class="o">=</span> <span class="n">RoadId</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-            <span class="c1"># road = self._build_road(u, v, k, d)</span>
             <span class="n">geom</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_geom_key</span><span class="p">]</span>
-            <span class="n">box</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">bounds</span>
+            <span class="n">geoms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">geom</span><span class="p">)</span>
+            <span class="n">road_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">road_id</span><span class="p">)</span>
 
-            <span class="n">idx</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">box</span><span class="p">,</span> <span class="n">obj</span><span class="o">=</span><span class="n">road_id</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geoms</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No geometries found in graph; cannot build spatial index&quot;</span><span class="p">)</span>
 
-            <span class="c1"># road_lookup[road.road_id] = road</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">rtree</span> <span class="o">=</span> <span class="n">idx</span>
-        <span class="c1"># self._road_lookup: Dict[RoadId, Road] = road_lookup</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rtree</span> <span class="o">=</span> <span class="n">STRtree</span><span class="p">(</span><span class="n">geoms</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_road_id_mapping</span> <span class="o">=</span> <span class="n">road_ids</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">output_lines</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="s2">&quot;Mappymatch NxMap object&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;roads: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_road_lookup</span><span class="p">)</span><span class="si">}</span><span class="s2"> Road objects&quot;</span><span class="p">,</span>
-            <span class="sa">f</span><span class="s2">&quot;graph: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Mappymatch NxMap object:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot; - roads: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span><span class="si">}</span><span class="s2"> Road objects&quot;</span><span class="p">,</span>
         <span class="p">]</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_lines</span><span class="p">)</span>
 
@@ -548,13 +1029,30 @@ window.addEventListener("load", () => mermaid.run());
 <a class="viewcode-back" href="../../../../_autosummary/mappymatch.maps.nx.nx_map.html#mappymatch.maps.nx.nx_map.NxMap.set_road_attributes">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_road_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attributes</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="n">RoadId</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Set the attributes of the roads in the map</span>
+<span class="sd">        Add or update attributes for specific roads in the network.</span>
+
+<span class="sd">        This allows you to enrich the road network with custom data like measured speeds,</span>
+<span class="sd">        traffic volumes, pavement conditions, etc. The new attributes become part of the</span>
+<span class="sd">        road metadata and can be accessed in matching results.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            attributes: A dictionary mapping road ids to dictionaries of attributes</span>
+<span class="sd">            attributes: A dictionary mapping RoadId objects to dictionaries of attribute name-value pairs.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            None</span>
+<span class="sd">        Note:</span>
+<span class="sd">            After setting attributes, the internal spatial index is rebuilt. For bulk</span>
+<span class="sd">            updates, it&#39;s more efficient to set all attributes in a single call.</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; # Add custom speed data</span>
+<span class="sd">            &gt;&gt;&gt; speed_data = {</span>
+<span class="sd">            ...     RoadId(&#39;1&#39;, &#39;2&#39;, 0): {&#39;measured_speed_mph&#39;: 32.5},</span>
+<span class="sd">            ...     RoadId(&#39;2&#39;, &#39;3&#39;, 0): {&#39;measured_speed_mph&#39;: 28.3}</span>
+<span class="sd">            ... }</span>
+<span class="sd">            &gt;&gt;&gt; road_map.set_road_attributes(speed_data)</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">            &gt;&gt;&gt; # Access the new attributes</span>
+<span class="sd">            &gt;&gt;&gt; road = road_map.road_by_id(RoadId(&#39;1&#39;, &#39;2&#39;, 0))</span>
+<span class="sd">            &gt;&gt;&gt; print(road.metadata[&#39;measured_speed_mph&#39;])  # 32.5</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">attrs</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">attr_name</span> <span class="ow">in</span> <span class="n">attrs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
@@ -576,24 +1074,36 @@ window.addEventListener("load", () => mermaid.run());
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">from_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">NxMap</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Build a NxMap instance from a file</span>
+<span class="sd">        Load a NxMap from a saved file.</span>
+
+<span class="sd">        Supports loading from pickle (.pickle) or JSON (.json) formats. Pickle files</span>
+<span class="sd">        are smaller and faster to load, while JSON files are human-readable and portable.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            file: The graph pickle file to load the graph from</span>
+<span class="sd">            file: Path to the saved map file (must have .pickle or .json extension)</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A NxMap instance</span>
+<span class="sd">            A NxMap instance loaded from the file</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If the file extension is not .pickle or .json</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; # Load from pickle (recommended for large networks)</span>
+<span class="sd">            &gt;&gt;&gt; road_map = NxMap.from_file(&#39;network.pickle&#39;)</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">            &gt;&gt;&gt; # Load from JSON</span>
+<span class="sd">            &gt;&gt;&gt; road_map = NxMap.from_file(&#39;network.json&#39;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.pickle&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;NxMap does not support reading from pickle files, please use .json instead&quot;</span>
-            <span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">p</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.json&quot;</span><span class="p">:</span>
             <span class="k">with</span> <span class="n">p</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">NxMap</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;NxMap only supports reading from json files&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;NxMap only supports reading from json and pickle files&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="NxMap.from_geofence">
@@ -605,29 +1115,67 @@ window.addEventListener("load", () => mermaid.run());
         <span class="n">xy</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">network_type</span><span class="p">:</span> <span class="n">NetworkType</span> <span class="o">=</span> <span class="n">NetworkType</span><span class="o">.</span><span class="n">DRIVE</span><span class="p">,</span>
         <span class="n">custom_filter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">additional_metadata_keys</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">set</span> <span class="o">|</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">filter_to_largest_component</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NxMap</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Read an OSM network graph into a NxMap</span>
+<span class="sd">        Download and create a NxMap from OpenStreetMap data within a geofence.</span>
+
+<span class="sd">        This method uses OSMnx to download road network data from OpenStreetMap for the</span>
+<span class="sd">        specified geographic area. It&#39;s the primary way to create maps from online sources.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            geofence: the geofence to clip the graph to</span>
-<span class="sd">            xy: whether to use xy coordinates or lat/lon</span>
-<span class="sd">            network_type: the network type to use for the graph</span>
-<span class="sd">            custom_filter: a custom filter to pass to osmnx like &#39;[&quot;highway&quot;~&quot;motorway|primary&quot;]&#39;</span>
+<span class="sd">            geofence: A Geofence defining the area to download. Must be in EPSG:4326 (lat/lon).</span>
+<span class="sd">            xy: If True, convert the network to Web Mercator (EPSG:3857) for accurate distance calculations. If False, keep in EPSG:4326. Default is True.</span>
+<span class="sd">            network_type: The type of road network to download. Options include DRIVE, WALK, BIKE, DRIVE_SERVICE, ALL, etc. Default is DRIVE.</span>
+<span class="sd">            custom_filter: A custom OSMnx filter string for advanced queries. Example: &#39;[&quot;highway&quot;~&quot;motorway|primary&quot;]&#39; for only major roads.</span>
+<span class="sd">            additional_metadata_keys: Set or list of OSM tag keys to preserve in road metadata. Example: {&#39;maxspeed&#39;, &#39;highway&#39;, &#39;name&#39;, &#39;surface&#39;}</span>
+<span class="sd">            filter_to_largest_component: If True (default), keep only the largest strongly connected component to ensure routing works. If False, keep all components (may cause routing failures between disconnected parts).</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            a NxMap</span>
+<span class="sd">            A new NxMap with roads downloaded from OpenStreetMap</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If the geofence is not in EPSG:4326</span>
+<span class="sd">            MapException: If OSMnx is not installed</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; from mappymatch.maps.nx import NxMap, NetworkType</span>
+<span class="sd">            &gt;&gt;&gt; from mappymatch.constructs.geofence import Geofence</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">            &gt;&gt;&gt; # Download driving network for a city</span>
+<span class="sd">            &gt;&gt;&gt; geofence = Geofence.from_geojson(&#39;city_boundary.geojson&#39;)</span>
+<span class="sd">            &gt;&gt;&gt; road_map = NxMap.from_geofence(geofence, network_type=NetworkType.DRIVE)</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">            &gt;&gt;&gt; # Download with additional metadata</span>
+<span class="sd">            &gt;&gt;&gt; road_map = NxMap.from_geofence(</span>
+<span class="sd">            ...     geofence,</span>
+<span class="sd">            ...     network_type=NetworkType.DRIVE,</span>
+<span class="sd">            ...     additional_metadata_keys={&#39;maxspeed&#39;, &#39;lanes&#39;, &#39;name&#39;}</span>
+<span class="sd">            ... )</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">            &gt;&gt;&gt; # Custom filter for only highways</span>
+<span class="sd">            &gt;&gt;&gt; road_map = NxMap.from_geofence(</span>
+<span class="sd">            ...     geofence,</span>
+<span class="sd">            ...     network_type=NetworkType.DRIVE,</span>
+<span class="sd">            ...     custom_filter=&#39;[&quot;highway&quot;~&quot;motorway|trunk|primary&quot;]&#39;</span>
+<span class="sd">            ... )</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">geofence</span><span class="o">.</span><span class="n">crs</span> <span class="o">!=</span> <span class="n">LATLON_CRS</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;the geofence must in the epsg:4326 crs but got </span><span class="si">{</span><span class="n">geofence</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">to_authority</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
 
+        <span class="k">if</span> <span class="n">additional_metadata_keys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">additional_metadata_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">additional_metadata_keys</span><span class="p">)</span>
+
         <span class="n">nx_graph</span> <span class="o">=</span> <span class="n">nx_graph_from_osmnx</span><span class="p">(</span>
             <span class="n">geofence</span><span class="o">=</span><span class="n">geofence</span><span class="p">,</span>
             <span class="n">network_type</span><span class="o">=</span><span class="n">network_type</span><span class="p">,</span>
             <span class="n">xy</span><span class="o">=</span><span class="n">xy</span><span class="p">,</span>
             <span class="n">custom_filter</span><span class="o">=</span><span class="n">custom_filter</span><span class="p">,</span>
+            <span class="n">additional_metadata_keys</span><span class="o">=</span><span class="n">additional_metadata_keys</span><span class="p">,</span>
+            <span class="n">filter_to_largest_component</span><span class="o">=</span><span class="n">filter_to_largest_component</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">NxMap</span><span class="p">(</span><span class="n">nx_graph</span><span class="p">)</span></div>
@@ -637,23 +1185,36 @@ window.addEventListener("load", () => mermaid.run());
 <a class="viewcode-back" href="../../../../_autosummary/mappymatch.maps.nx.nx_map.html#mappymatch.maps.nx.nx_map.NxMap.to_file">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">to_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Save the graph to a pickle file</span>
+<span class="sd">        Save the map to a file for later use.</span>
+
+<span class="sd">        Saves the entire NxMap including the graph structure, geometries, CRS, and all</span>
+<span class="sd">        metadata. Supports pickle (.pickle) and JSON (.json) formats.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            outfile: The file to save the graph to</span>
+<span class="sd">            outfile: Path where the file should be saved (extension determines format:</span>
+<span class="sd">                .pickle for binary pickle format, .json for JSON format)</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If the file extension is not .pickle or .json</span>
+
+<span class="sd">        Examples:</span>
+<span class="sd">            &gt;&gt;&gt; # Save as pickle (recommended - faster and smaller)</span>
+<span class="sd">            &gt;&gt;&gt; road_map.to_file(&#39;network.pickle&#39;)</span>
+<span class="sd">            &gt;&gt;&gt;</span>
+<span class="sd">            &gt;&gt;&gt; # Save as JSON (portable and human-readable)</span>
+<span class="sd">            &gt;&gt;&gt; road_map.to_file(&#39;network.json&#39;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">outfile</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">outfile</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.pickle&quot;</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-                <span class="s2">&quot;NxMap does not support writing to pickle files, please use .json instead&quot;</span>
-            <span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">outfile</span><span class="o">.</span><span class="n">suffix</span> <span class="o">==</span> <span class="s2">&quot;.json&quot;</span><span class="p">:</span>
             <span class="n">graph_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
             <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">graph_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;NxMap only supports writing to json files&quot;</span><span class="p">)</span></div>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;NxMap only supports writing to json and pickle files&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="NxMap.from_dict">
@@ -700,13 +1261,12 @@ window.addEventListener("load", () => mermaid.run());
 
 <div class="viewcode-block" id="NxMap.nearest_road">
 <a class="viewcode-back" href="../../../../_autosummary/mappymatch.maps.nx.nx_map.html#mappymatch.maps.nx.nx_map.NxMap.nearest_road">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">nearest_road</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">:</span> <span class="n">Coordinate</span><span class="p">,</span> <span class="n">buffer</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Road</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nearest_road</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coord</span><span class="p">:</span> <span class="n">Coordinate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Road</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        A helper function to get the nearest road.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            coord: The coordinate to find the nearest road to</span>
-<span class="sd">            buffer: The buffer to search around the coordinate</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The nearest road to the coordinate</span>
@@ -715,23 +1275,11 @@ window.addEventListener("load", () => mermaid.run());
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;crs of origin </span><span class="si">{</span><span class="n">coord</span><span class="o">.</span><span class="n">crs</span><span class="si">}</span><span class="s2"> must match crs of map </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">crs</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="p">)</span>
-        <span class="n">nearest_candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
-            <span class="nb">map</span><span class="p">(</span>
-                <span class="k">lambda</span> <span class="n">c</span><span class="p">:</span> <span class="n">c</span><span class="o">.</span><span class="n">object</span><span class="p">,</span>
-                <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rtree</span><span class="o">.</span><span class="n">nearest</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span><span class="o">.</span><span class="n">bounds</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">objects</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nearest_candidates</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">nearest_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtree</span><span class="o">.</span><span class="n">nearest</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nearest_idx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No roads found for </span><span class="si">{</span><span class="n">coord</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">nearest_candidates</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">nearest_id</span> <span class="o">=</span> <span class="n">nearest_candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">distances</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_build_road</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">coord</span><span class="o">.</span><span class="n">geom</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">nearest_candidates</span>
-            <span class="p">]</span>
-            <span class="n">nearest_id</span> <span class="o">=</span> <span class="n">nearest_candidates</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">distances</span><span class="p">)]</span>
+        <span class="n">nearest_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_road_id_mapping</span><span class="p">[</span><span class="n">nearest_idx</span><span class="p">]</span>
 
         <span class="n">road</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_road</span><span class="p">(</span><span class="n">nearest_id</span><span class="p">)</span>
 
@@ -794,12 +1342,17 @@ window.addEventListener("load", () => mermaid.run());
         <span class="k">else</span><span class="p">:</span>
             <span class="n">dest_id</span> <span class="o">=</span> <span class="n">dest_road</span><span class="o">.</span><span class="n">road_id</span><span class="o">.</span><span class="n">end</span>
 
-        <span class="n">nx_route</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span>
-            <span class="n">origin_id</span><span class="p">,</span>
-            <span class="n">dest_id</span><span class="p">,</span>
-            <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
-        <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">nx_route</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">g</span><span class="p">,</span>
+                <span class="n">origin_id</span><span class="p">,</span>
+                <span class="n">dest_id</span><span class="p">,</span>
+                <span class="n">weight</span><span class="o">=</span><span class="n">weight</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="n">nx</span><span class="o">.</span><span class="n">NetworkXNoPath</span><span class="p">:</span>
+            <span class="c1"># No path exists between origin and destination</span>
+            <span class="c1"># This can happen when the graph has multiple disconnected components</span>
+            <span class="k">return</span> <span class="p">[]</span>
 
         <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nx_route</span><span class="p">)):</span>
@@ -846,7 +1399,7 @@ window.addEventListener("load", () => mermaid.run());
   <div class="footer-item">
     
 <p class="component-author">
-By National Renewable Energy Laboratory
+By National Laboratory of the Rockies
 </p>
 
   </div>
@@ -880,8 +1433,8 @@ By National Renewable Energy Laboratory
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
