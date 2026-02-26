@@ -2,6 +2,8 @@
 
 .DS_Store
 
+*.ipynb
+
 .idea/
 cache/
 .vscode/
@@ -18,6 +20,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+_build/
 develop-eggs/
 dist/
 downloads/
@@ -79,6 +82,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/_autosummary/
 
 # PyBuilder
 .pybuilder/

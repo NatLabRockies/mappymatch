@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: mappymatch
-author: National Renewable Energy Laboratory
+author: National Laboratory of the Rockies
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -17,7 +17,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/NREL/mappymatch # Online location of your book
+  url: https://github.com/NLR/mappymatch # Online location of your book
   path_to_book: docs # Optional path to your book, relative to the repository root
   branch: main # Which branch of the repository should be used when creating links (optional)
 
@@ -33,7 +33,6 @@ sphinx:
     - "sphinx.ext.autodoc"
     - "sphinx.ext.autosummary"
     - "sphinx.ext.viewcode"
-    - "sphinx_autodoc_typehints"
     - "sphinxcontrib.autoyaml"
     - "sphinxcontrib.mermaid"
   config:
@@ -55,5 +54,4 @@ sphinx:
       member-order: bysource
       undoc-members: true
       private-members: false
-    autodoc_typehints: both
     mermaid_version: "10.8"

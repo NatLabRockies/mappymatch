@@ -23,7 +23,9 @@ log = logging.getLogger(__name__)
 
 class LCSSMatcher(MatcherInterface):
     """
-    A map matcher based on the paper:
+    Map matcher based on the Longest Common Subsequence (LCSS) algorithm.
+
+    This matcher implements the trajectory segmentation approach described in:
 
     Zhu, Lei, Jacob R. Holden, and Jeffrey D. Gonder.
     "Trajectory Segmentation Map-Matching Approach for Large-Scale,
@@ -31,13 +33,30 @@ class LCSSMatcher(MatcherInterface):
     Transportation Research Record: Journal of the Transportation Research
     Board 2645 (2017): 67-75.
 
+    The algorithm works by:
+    1. Computing candidate paths through the road network
+    2. Scoring path segments using LCSS similarity
+    3. Iteratively refining segments by identifying cutting points
+    4. Merging segments until similarity threshold is met
+
     Args:
-        road_map: The road map to use for matching
-        distance_epsilon: The distance epsilon to use for matching (default: 50 meters)
-        similarity_cutoff: The similarity cutoff to use for stopping the algorithm (default: 0.9)
-        cutting_threshold: The distance threshold to use for computing cutting points (default: 10 meters)
-        random_cuts: The number of random cuts to add at each iteration (default: 0)
-        distance_threshold: The distance threshold above which no match is made (default: 10000 meters)
+        road_map: The road network to match against (must implement MapInterface)
+        distance_epsilon: Maximum distance (in meters) for a GPS point to be considered near a road segment. Points beyond this distance contribute less to similarity. Default is 50 meters.
+        similarity_cutoff: Minimum similarity score (0-1) to stop iterative refinement. Higher values demand better matching quality. Default is 0.9.
+        cutting_threshold: Distance threshold (in meters) for identifying potential cutting points where trajectory should be split. Default is 10 meters.
+        random_cuts: Number of random cutting points to add at each iteration for exploration. Usually 0 for deterministic results. Default is 0.
+        distance_threshold: Maximum distance (in meters) for matching a point to a road. Points beyond this are left unmatched. Default is 10000 meters (10km).
+
+    Examples:
+        >>> from mappymatch.matchers.lcss import LCSSMatcher
+        >>> from mappymatch.maps.nx import NxMap
+        >>>
+        >>> # Load a road network
+        >>> road_map = NxMap.from_file('network.pickle')
+        >>>
+        >>> # Create matcher with default parameters
+        >>> matcher = LCSSMatcher(road_map)
+        >>> result = matcher.match_trace(trace)
     """
 
     def __init__(

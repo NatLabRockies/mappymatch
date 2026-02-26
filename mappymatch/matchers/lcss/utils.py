@@ -6,24 +6,18 @@ from typing import Any, Callable, Generator, List
 
 def forward_merge(merge_list: List, condition: Callable[[Any], bool]) -> List:
     """
-    Helper function to merge items in a list by adding them to the next eligible element.
-    This merge moves left to right.
+    Merge items in a list by combining matching items with the next eligible element (left-to-right).
 
-    For example, given the list:
-
-    [1, 2, 3, 4, 5]
-
-    And the condition, x < 3, the function yields:
-
-    >>> forward_merge([1,2,3,4,5], lambda x: x < 3)
-    >>> [6, 4, 5]
+    This function scans through the list from left to right. When it encounters items that
+    satisfy the condition, it combines them with the next item that doesn't satisfy the
+    condition. This is useful for merging small trajectory segments with their neighbors.
 
     Args:
-        merge_list: the list to merge
-        condition: the merge condition
+        merge_list: The list of items to merge. Items should support addition (+) for combining.
+        condition: A function that returns True for items that should be merged forward. Items satisfying this condition will be combined with the next non-matching item.
 
     Returns:
-        a list of the merged items
+        A new list with matching items merged into subsequent items
     """
     items = []
 
@@ -51,24 +45,18 @@ def forward_merge(merge_list: List, condition: Callable[[Any], bool]) -> List:
 
 def reverse_merge(merge_list: List, condition: Callable[[Any], bool]) -> List:
     """
-    Helper function to merge items in a list by adding them to the next eligible element.
-    This merge moves right to left.
+    Merge items in a list by combining matching items with the previous eligible element (right-to-left).
 
-    For example, given the list:
-
-    [1, 2, 3, 4, 5]
-
-    And the condition, x < 3, the function yields:
-
-    >>> list(reverse_merge([1,2,3,4,5], lambda x: x < 3))
-    >>> [3, 3, 4, 5]
+    This function scans through the list from right to left. When it encounters items that
+    satisfy the condition, it combines them with the previous item that doesn't satisfy the
+    condition. This is the reverse of forward_merge.
 
     Args:
-        merge_list: the list to merge
-        condition: the merge condition
+        merge_list: The list of items to merge. Items should support addition (+) for combining.
+        condition: A function that returns True for items that should be merged backward. Items satisfying this condition will be combined with the previous non-matching item.
 
     Returns:
-        a list of the merged items
+        A new list with matching items merged into preceding items
     """
     items = []
 
@@ -97,14 +85,21 @@ def reverse_merge(merge_list: List, condition: Callable[[Any], bool]) -> List:
 
 def merge(merge_list: List, condition: Callable[[Any], bool]) -> List:
     """
-    Combines the forward and reverse merges to catch edge cases at the tail ends of the list
+    Merge items in a list using both forward and reverse merging to handle edge cases.
+
+    This function first performs a forward merge, then checks if any items still satisfy
+    the condition. If so, it performs a reverse merge to handle items at the end of the
+    list that couldn't be merged forward.
+
+    This two-pass approach ensures that items at both ends of the list can be successfully
+    merged with their neighbors.
 
     Args:
-        merge_list: the list to merge
-        condition: the merge condition
+        merge_list: The list of items to merge. Items should support addition (+) for combining.
+        condition: A function that returns True for items that should be merged with neighbors.
 
     Returns:
-        a list of the merged items
+        A new list with all matching items merged into neighbors
     """
     f_merge = forward_merge(merge_list, condition)
 
@@ -116,13 +111,21 @@ def merge(merge_list: List, condition: Callable[[Any], bool]) -> List:
 
 def compress(cutting_points: List) -> Generator:
     """
-    Compress a list of cutting points if they happen to be directly adjacent to another
+    Compress adjacent cutting points by keeping only the middle point of each group.
+
+    When multiple cutting points are directly adjacent (differ by 1 index), this function
+    collapses them into a single representative cutting point. For each group, the middle
+    point is selected as the representative.
+
+    This prevents the LCSS algorithm from creating too many tiny segments when several
+    adjacent points all have poor matches.
 
     Args:
-        cutting_points: the list of cutting points
+        cutting_points: A list of CuttingPoint objects to compress
 
-    Returns:
-        a generator of compressed cutting points
+    Yields:
+        CuttingPoint objects: One representative cutting point for each group of
+        adjacent cutting points. The middle point of each group is selected.
     """
     sorted_cuts = sorted(cutting_points, key=lambda c: c.trace_index)
     for k, g in groupby(enumerate(sorted_cuts), lambda x: x[0] - x[1].trace_index):
