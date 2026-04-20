@@ -6,14 +6,14 @@ This document provides a high-level overview of how you can get involved.
 ## Asking Questions
 
 Have a question? Rather than opening an issue directly, please ask questions
-or post comments in [Q&A Discussions](https://github.com/NREL/mappymatch/discussions/categories/q-a).
-The NREL team or other members of the community will assist. Your well-worded
+or post comments in [Q&A Discussions](https://github.com/NatLabRockies/mappymatch/discussions/categories/q-a).
+The NLR team or other members of the community will assist. Your well-worded
 question will serve as a resource to others searching for help.
 
 ## Providing Feedback
 
 Your comments and feedback are very welcome. Please post to
-[General Discussions](https://github.com/NREL/mappymatch/discussions/categories/general)
+[General Discussions](https://github.com/NatLabRockies/mappymatch/discussions/categories/general)
 with lots of information and detail. It is beneficial to consider
 how someone else will understand your comments in order to make
 them most effective.
@@ -27,7 +27,7 @@ reporting your issue as effective as possible.
 ### Look For an Existing Issue
 
 Before you create a new issue, please do a search in
-[open issues](https://github.com/NREL/mappymatch/issues) to see if
+[open issues](https://github.com/NatLabRockies/mappymatch/issues) to see if
 the issue or feature request has already been filed.
 
 If you find your issue already exists, make relevant comments and add your
@@ -68,4 +68,4 @@ Please remember to do the following:
 
 If you are interested in writing code to fix an issue or
 submit a new feature, let us know in
-[Ideas Discussions](https://github.com/NREL/mappymatch/discussions/categories/ideas)!
+[Ideas Discussions](https://github.com/NatLabRockies/mappymatch/discussions/categories/ideas)!

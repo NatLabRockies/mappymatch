@@ -59,7 +59,7 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/NREL/mappymatch"
+Homepage = "https://github.com/NatLabRockies/mappymatch"
 
 [tool.hatch.version]
 path = "mappymatch/__about__.py"
