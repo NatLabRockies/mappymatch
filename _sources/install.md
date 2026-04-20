@@ -19,7 +19,7 @@ We hope to eventually provide a conda distribution (help doing this would be gre
 Clone the repo:
 
 ```bash
-git clone https://github.com/NREL/mappymatch.git && cd mappymatch
+git clone https://github.com/NatLabRockies/mappymatch.git && cd mappymatch
 ```
 
 Get [Anaconda](https://www.anaconda.com/download) or [miniconda](https://docs.anaconda.com/miniconda/).
